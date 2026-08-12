@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BOOT_LINES } from "./data";
+import { PixelSpider } from "./PixelSpider";
 
 export function Preloader({ onDone }: { onDone: () => void }) {
   const [lines, setLines] = useState<string[]>([]);
@@ -23,12 +24,21 @@ export function Preloader({ onDone }: { onDone: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-screen screen-scan px-6 transition-opacity duration-500 ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-screen screen-scan px-6 transition-opacity duration-500 ${
         leaving ? "opacity-0" : "opacity-100"
       }`}
     >
-      <div className="w-full max-w-2xl">
-        <div className="h-64 overflow-hidden text-[9px] leading-5 text-accent sm:text-[10px]">
+      {/* swinging hero across the boot screen */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 [animation:swing_2.6s_ease-in-out_infinite] origin-top"
+      >
+        <div className="mx-auto h-[22vh] w-[2px] bg-foreground/50" />
+        <PixelSpider size={64} className="mx-auto" />
+      </div>
+
+      <div className="mt-[26vh] w-full max-w-2xl">
+        <div className="h-56 overflow-hidden text-[9px] leading-5 text-accent sm:text-[10px]">
           {lines.map((l) => (
             <p key={l} className="text-glow">
               &gt; {l}
