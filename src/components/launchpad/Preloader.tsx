@@ -34,7 +34,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
         className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 [animation:swing_2.6s_ease-in-out_infinite] origin-top"
       >
         <div className="mx-auto h-[22vh] w-[2px] bg-foreground/50" />
-        <PixelSpider size={64} className="mx-auto" />
+        <PixelSpider size={72} suit="classic" pose="hanging" expression="squint" className="mx-auto" />
       </div>
 
       <div className="mt-[26vh] w-full max-w-2xl">

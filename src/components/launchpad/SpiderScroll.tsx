@@ -1,65 +1,175 @@
-import { useEffect, useState } from "react";
-import { PixelSpider } from "./PixelSpider";
+import { useEffect, useState, useRef } from "react";
+import { PixelSpider, SpideySuit, EyeExpression, SpideyPose } from "./PixelSpider";
+import { playThwipSound, playSwingSound } from "@/lib/spideyAudio";
 
-const QUIPS = ["THWIP!", "WHAM!", "ZIP!", "SWOOSH!"];
+const SUITS: SpideySuit[] = ["classic", "symbiote", "iron", "miles"];
 
 /**
- * A pixel hero that hangs from a web line, follows the scroll position and
- * every few seconds swings across to the other side of the viewport.
+ * Interactive Spider-Man Component:
+ * - Smoothly follows the mouse cursor across the screen.
+ * - Straight vertical web rope line.
+ * - Gentle idle up-and-down bobbing.
+ * - Dynamic swing pose and tilt based on movement velocity.
  */
 export function SpiderScroll() {
-  const [progress, setProgress] = useState(0);
-  const [side, setSide] = useState<"left" | "right">("right");
-  const [swinging, setSwinging] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 400, y: 250 });
+  const [spideyPos, setSpideyPos] = useState({ x: 400, y: 250 });
+
+  const [suitIndex, setSuitIndex] = useState(0);
+  const [expression, setExpression] = useState<EyeExpression>("normal");
+  const [pose, setPose] = useState<SpideyPose>("hanging");
   const [quip, setQuip] = useState<string | null>(null);
+  const [tiltAngle, setTiltAngle] = useState(0);
 
+  const lastSoundTime = useRef<number>(0);
+
+  // Track mouse position
   useEffect(() => {
-    const onScroll = () => {
-      const max = document.body.scrollHeight - window.innerHeight;
-      setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  // Animation Physics Loop: Follow Mouse Cursor Smoothly
   useEffect(() => {
-    const id = window.setInterval(() => {
-      setSwinging(true);
-      setQuip(QUIPS[Math.floor(Math.random() * QUIPS.length)]!);
-      setSide((s) => (s === "right" ? "left" : "right"));
-      window.setTimeout(() => setSwinging(false), 1400);
-      window.setTimeout(() => setQuip(null), 1600);
-    }, 6500);
-    return () => window.clearInterval(id);
-  }, []);
+    let animId: number;
 
-  // vertical anchor of the web line inside the viewport
-  const top = 12 + progress * 55; // percent
+    const loop = () => {
+      setSpideyPos((prev) => {
+        // Smooth up-and-down vertical idle bobbing
+        const idleBobY = Math.sin(Date.now() / 450) * 12;
+
+        // Target coordinates based on mouse position
+        let targetX = mousePos.x;
+        let targetY = mousePos.y + idleBobY;
+
+        // Keep inside screen padding
+        const padding = 70;
+        targetX = Math.max(padding, Math.min(window.innerWidth - padding, targetX));
+        targetY = Math.max(90, Math.min(window.innerHeight - 120, targetY));
+
+        // Smooth delayed lerp (takes time to glide over to mouse position)
+        const lerpFactor = 0.045;
+        const nextX = prev.x + (targetX - prev.x) * lerpFactor;
+        const nextY = prev.y + (targetY - prev.y) * lerpFactor;
+
+        // Calculate speed & movement velocity
+        const vx = nextX - prev.x;
+        const vy = nextY - prev.y;
+        const speed = Math.sqrt(vx * vx + vy * vy);
+
+        // Update pose and sound based on movement speed
+        if (speed > 1.2) {
+          setPose((currentPose) => (currentPose === "thwip" ? "thwip" : "swinging"));
+          setExpression("squint");
+
+          const now = Date.now();
+          if (speed > 2.5 && now - lastSoundTime.current > 900) {
+            playSwingSound();
+            lastSoundTime.current = now;
+          }
+        } else {
+          setPose((currentPose) => (currentPose === "thwip" ? "thwip" : "hanging"));
+          setExpression("normal");
+        }
+
+        // Body tilt in direction of movement
+        const targetTilt = Math.max(-25, Math.min(25, vx * 4.5));
+        setTiltAngle((currentTilt) => currentTilt + (targetTilt - currentTilt) * 0.08);
+
+        return { x: nextX, y: nextY };
+      });
+
+      animId = requestAnimationFrame(loop);
+    };
+
+    animId = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(animId);
+  }, [mousePos]);
+
+  // Click Spidey to swap suit
+  const handleSpideyClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setSuitIndex((prev) => (prev + 1) % SUITS.length);
+    playThwipSound();
+    setPose("thwip");
+    setExpression("wide");
+    setQuip(`SUIT SWAP! 🕷️`);
+
+    window.setTimeout(() => {
+      setPose("hanging");
+      setExpression("normal");
+      setQuip(null);
+    }, 900);
+  };
+
+  const activeSuit = SUITS[suitIndex]!;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-40 hidden overflow-hidden md:block">
+    <div className="pointer-events-none fixed inset-0 z-40 overflow-hidden">
+      {/* SVG Canvas for STRAIGHT Web Line ONLY */}
+      <svg className="absolute inset-0 h-full w-full pointer-events-none">
+        {/* Anchor point at top */}
+        <circle cx={spideyPos.x} cy={6} r="4" fill="var(--primary)" />
+
+        {/* Straight main web line */}
+        <line
+          x1={spideyPos.x}
+          y1={0}
+          x2={spideyPos.x}
+          y2={spideyPos.y - 28}
+          stroke="var(--foreground)"
+          strokeWidth="2.5"
+          strokeOpacity="0.75"
+        />
+
+        {/* Inner thin white web strand highlight */}
+        <line
+          x1={spideyPos.x + 1}
+          y1={0}
+          x2={spideyPos.x + 1}
+          y2={spideyPos.y - 28}
+          stroke="#FFFFFF"
+          strokeWidth="1"
+          strokeOpacity="0.4"
+          strokeDasharray="6 3"
+        />
+      </svg>
+
+      {/* Spider-Man Character */}
       <div
-        className="absolute transition-all duration-[1400ms] ease-in-out"
+        className="pointer-events-auto absolute transition-transform duration-100 ease-out"
         style={{
-          top: `${top}%`,
-          [side === "right" ? "right" : "left"]: "3.5rem",
-          transform: `rotate(${swinging ? (side === "right" ? 16 : -16) : 0}deg)`,
+          left: `${spideyPos.x - 34}px`,
+          top: `${spideyPos.y - 34}px`,
+          transform: `rotate(${tiltAngle}deg)`,
           transformOrigin: "top center",
         }}
       >
-        {/* web line up to the top of the screen */}
-        <div
-          className="absolute bottom-full left-1/2 w-[2px] -translate-x-1/2 bg-foreground/60"
-          style={{ height: "100vh" }}
-        />
-        <div className="relative [animation:swing_3.4s_ease-in-out_infinite] origin-top">
-          <PixelSpider size={56} />
-        </div>
-        {quip && (
-          <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap border-4 border-frame-dark bg-web-yellow px-2 py-1 text-[8px] text-background">
-            {quip}
+        {/* Spidey Character */}
+        <div className="relative group cursor-pointer" onClick={handleSpideyClick}>
+          <PixelSpider
+            size={68}
+            suit={activeSuit}
+            pose={pose}
+            expression={expression}
+            interactive
+          />
+
+          {/* Tooltip */}
+          <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap rounded border border-frame-dark bg-card px-2 py-0.5 text-[7px] text-primary uppercase">
+            CLICK TO SWAP SUIT
           </span>
+        </div>
+
+        {/* Speech Quip */}
+        {quip && (
+          <div className="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap border-4 border-frame-dark bg-web-yellow px-3 py-1 text-[8px] font-bold text-background shadow animate-drop-in">
+            {quip}
+          </div>
         )}
       </div>
     </div>
