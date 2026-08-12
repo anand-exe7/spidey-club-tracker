@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [booted, setBooted] = useState(false);
-  const [active, setActive] = useState(DOMAINS[0].id);
+  const [active, setActive] = useState(DOMAINS[0]!.id);
   const domain = DOMAINS.find((d) => d.id === active)!;
 
   return (
