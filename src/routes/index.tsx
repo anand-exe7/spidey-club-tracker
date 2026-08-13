@@ -54,13 +54,13 @@ function Index() {
       {stage === "landing" && (
         <Frame>
           {/* HERO SECTION */}
-          <section className="relative flex min-h-[82vh] flex-col items-center justify-center px-4 py-20 text-center">
+          <section className="relative flex min-h-[80svh] flex-col items-center justify-center px-4 py-20 text-center sm:min-h-[82vh]">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-10"
               style={{
                 backgroundImage:
-                  "repeating-linear-gradient(45deg, transparent 0 22px, oklch(0.71 0.187 50 / 0.18) 22px 23px), repeating-linear-gradient(-45deg, transparent 0 22px, oklch(0.71 0.187 50 / 0.18) 22px 23px)",
+                  "repeating-linear-gradient(45deg, transparent 0 22px, oklch(0.846 0.159 82.6 / 0.18) 22px 23px), repeating-linear-gradient(-45deg, transparent 0 22px, oklch(0.846 0.159 82.6 / 0.18) 22px 23px)",
               }}
             />
 
@@ -121,7 +121,7 @@ function Index() {
             </div>
 
             <p className="relative mt-10 text-[8px] tracking-widest text-muted-foreground uppercase">
-              MOVE MOUSE TO SWING SPIDEY • SCROLL TO EXPLORE ↓
+              TAP SPIDEY TO SWAP SUIT • SCROLL TO EXPLORE ↓
             </p>
           </section>
 

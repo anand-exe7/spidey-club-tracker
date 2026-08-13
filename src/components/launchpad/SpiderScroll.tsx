@@ -29,9 +29,17 @@ export function SpiderScroll() {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
+    const handleTouchMove = (e: TouchEvent) => {
+      const t = e.touches[0];
+      if (t) setMousePos({ x: t.clientX, y: t.clientY });
+    };
 
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
   }, []);
 
   // Animation Physics Loop: Follow Mouse Cursor Smoothly
@@ -184,7 +192,7 @@ export function SpiderScroll() {
 
         {/* Speech Quip */}
         {quip && (
-          <div className="absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap border-4 border-frame-dark bg-web-yellow px-3 py-1 text-[8px] font-bold text-background shadow animate-drop-in">
+          <div className="absolute left-1/2 top-full mt-2 max-w-[80vw] -translate-x-1/2 border-4 border-frame-dark bg-web-yellow px-3 py-1 text-center text-[8px] font-bold text-background shadow animate-drop-in">
             {quip}
           </div>
         )}

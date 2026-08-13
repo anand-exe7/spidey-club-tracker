@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -46,27 +47,27 @@
   --card-foreground: oklch(0.971 0.026 88);
   --popover: oklch(0.209 0.000 90);
   --popover-foreground: oklch(0.971 0.026 88);
-  --primary: oklch(0.71 0.187 50);
+  --primary: oklch(0.846 0.159 82.6);
   --primary-foreground: oklch(0.154 0.000 90);
-  --secondary: oklch(0.368 0.000 90);
+  --secondary: oklch(0.000 0.000 0);
   --secondary-foreground: oklch(0.971 0.026 88);
   --muted: oklch(0.209 0.000 90);
   --muted-foreground: oklch(0.703 0.000 90);
-  --accent: oklch(0.705 0.187 47.6);
+  --accent: oklch(0.846 0.159 82.6);
   --accent-foreground: oklch(0.154 0.000 90);
   --destructive: oklch(0.6 0.23 27);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(0.528 0.000 90);
   --input: oklch(0.528 0.000 90);
-  --ring: oklch(0.71 0.187 50);
+  --ring: oklch(0.846 0.159 82.6);
 
-  --frame: oklch(0.646 0.194 41.1);
-  --frame-light: oklch(0.705 0.187 47.6);
-  --frame-dark: oklch(0.553 0.174 38.4);
+  --frame: oklch(0.846 0.159 82.6);
+  --frame-light: oklch(0.846 0.159 82.6);
+  --frame-dark: oklch(0.68 0.14 82.6);
   --screen: oklch(0.136 0.002 17);
   --web-red: oklch(0.6 0.23 27);
-  --web-blue: oklch(0.71 0.187 50);
-  --web-yellow: oklch(0.71 0.187 50);
+  --web-blue: oklch(0.846 0.159 82.6);
+  --web-yellow: oklch(0.846 0.159 82.6);
 }
 
 @layer base {
@@ -80,7 +81,7 @@
 
   body {
     background:
-      radial-gradient(circle at 50% 0%, oklch(0.35 0.13 50), oklch(0.136 0.002 17) 70%);
+      radial-gradient(circle at 50% 0%, oklch(0.38 0.12 82.6), oklch(0.136 0.002 17) 70%);
     color: var(--color-foreground);
     font-family: var(--font-pixel);
     -webkit-font-smoothing: none;
@@ -111,7 +112,7 @@
 }
 
 @utility text-glow {
-  text-shadow: 0 0 8px oklch(0.71 0.187 50 / 0.8);
+  text-shadow: 0 0 8px oklch(0.846 0.159 82.6 / 0.8);
 }
 
 @keyframes ticker {

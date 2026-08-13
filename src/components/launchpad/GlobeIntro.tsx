@@ -263,19 +263,19 @@ export function GlobeIntro({ onDone }: { onDone: () => void }) {
       </div>
 
       {/* Status Readout */}
-      <div className="absolute top-[18%] left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-4">
+      <div className="absolute top-[16%] inset-x-0 z-20 flex flex-col items-center gap-4 px-4 text-center sm:top-[18%]">
         {started ? (
           <>
-            <p className="text-[10px] tracking-[0.5em] text-accent text-glow uppercase">
+            <p className="text-[10px] tracking-[0.3em] text-accent text-glow uppercase sm:tracking-[0.5em]">
               {active?.label ?? ""}
             </p>
             <p className="text-[8px] tracking-widest text-muted-foreground uppercase">
-              CLICK TO SKIP
+              TAP TO SKIP
             </p>
           </>
         ) : (
           <>
-            <p className="text-[10px] tracking-[0.5em] text-accent text-glow uppercase">
+            <p className="text-[10px] tracking-[0.3em] text-accent text-glow uppercase sm:tracking-[0.5em]">
               CODEKRAFTERS
             </p>
             <p className="border-4 border-frame-light bg-primary px-6 py-3 text-[9px] font-bold text-primary-foreground uppercase [animation:blink_1s_steps(1)_infinite]">

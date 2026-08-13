@@ -14,7 +14,7 @@ export function Frame({ children }: { children: ReactNode }) {
       <div className="relative border-8 border-frame bg-frame/40 p-2 sm:p-3">
         {/* top header pill */}
         <div className="pointer-events-none absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2">
-          <div className="border-4 border-frame-light bg-background px-4 py-2 text-[10px] tracking-widest text-foreground sm:text-xs">
+          <div className="border-4 border-frame-light bg-background px-3 py-1.5 text-[8px] tracking-widest text-foreground sm:px-4 sm:py-2 sm:text-xs">
             CODEKRAFTERS <span className="text-primary">◼</span> LAUNCHPAD
           </div>
         </div>

@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import Lenis from "lenis";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -121,6 +122,30 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    const lenis = new Lenis({ autoRaf: true, smoothWheel: true });
+
+    const onClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>(
+        'a[href^="#"]'
+      );
+      if (target) {
+        const id = target.getAttribute("href")!.slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          lenis.scrollTo(el, { offset: -80, duration: 1.4 });
+        }
+      }
+    };
+
+    document.addEventListener("click", onClick);
+    return () => {
+      document.removeEventListener("click", onClick);
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -10,10 +10,10 @@ export function SpideyMaskShowcase() {
   const [activeQuip, setActiveQuip] = useState<string | null>("CODEKRAFTERS SUIT LAB!");
 
   const suits: { id: SpideySuit; name: string; badge: string; color: string }[] = [
-    { id: "classic", name: "CLASSIC RED & BLUE", badge: "ORIGINAL", color: "bg-[#FA7604]" },
+    { id: "classic", name: "CLASSIC RED & BLUE", badge: "ORIGINAL", color: "bg-[#FFC136]" },
     { id: "symbiote", name: "SYMBIOTE BLACK SUIT", badge: "ALIEN VENOM", color: "bg-black" },
-    { id: "iron", name: "IRON SPIDER ARMOR", badge: "STARK TECH", color: "bg-[#F97316]" },
-    { id: "miles", name: "MILES MORALES SUIT", badge: "BROOKLYN", color: "bg-[#B4530A]" },
+    { id: "iron", name: "IRON SPIDER ARMOR", badge: "STARK TECH", color: "bg-[#FFC136]" },
+    { id: "miles", name: "MILES MORALES SUIT", badge: "BROOKLYN", color: "bg-[#B8860B]" },
   ];
 
   const expressions: { id: EyeExpression; label: string }[] = [

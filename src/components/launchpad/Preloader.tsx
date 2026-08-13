@@ -33,28 +33,39 @@ export function Preloader({ onDone }: { onDone: () => void }) {
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 [animation:swing_2.6s_ease-in-out_infinite] origin-top"
       >
-        <div className="mx-auto h-[22vh] w-[2px] bg-foreground/50" />
-        <PixelSpider size={72} suit="classic" pose="hanging" expression="squint" className="mx-auto" />
+        <div className="mx-auto h-[14vh] w-[2px] bg-foreground/50 sm:h-[22vh]" />
+        <PixelSpider
+          size={56}
+          suit="classic"
+          pose="hanging"
+          expression="squint"
+          className="mx-auto sm:hidden"
+        />
+        <PixelSpider
+          size={72}
+          suit="classic"
+          pose="hanging"
+          expression="squint"
+          className="mx-auto hidden sm:block"
+        />
       </div>
 
-      <div className="mt-[26vh] w-full max-w-2xl">
-        <div className="h-56 overflow-hidden text-[9px] leading-5 text-accent sm:text-[10px]">
+      <div className="mt-[18vh] w-full max-w-2xl px-2 sm:mt-[26vh] sm:px-0">
+        <div className="h-40 overflow-hidden text-[8px] leading-5 text-accent sm:h-56 sm:text-[10px]">
           {lines.map((l) => (
-            <p key={l} className="text-glow">
+            <p key={l} className="text-glow break-words">
               &gt; {l}
             </p>
           ))}
           <span className="inline-block h-3 w-2 bg-accent align-middle [animation:blink_1s_steps(1)_infinite]" />
         </div>
-        <div className="mt-6 border-4 border-frame-dark bg-muted p-1">
+        <div className="mt-4 border-4 border-frame-dark bg-muted p-1 sm:mt-6">
           <div
-            className="h-4 bg-primary transition-all duration-200"
+            className="h-3 bg-primary transition-all duration-200 sm:h-4"
             style={{ width: `${pct}%` }}
           />
         </div>
-        <p className="mt-3 text-center text-[9px] text-muted-foreground">
-          LOADING {pct}%
-        </p>
+        <p className="mt-3 text-center text-[9px] text-muted-foreground">LOADING {pct}%</p>
       </div>
     </div>
   );
