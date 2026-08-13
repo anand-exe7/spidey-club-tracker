@@ -14,7 +14,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
       if (i >= BOOT_LINES.length) {
         window.clearInterval(id);
         window.setTimeout(() => setLeaving(true), 500);
-        window.setTimeout(onDone, 1100);
+        window.setTimeout(onDone, 1000);
       }
     }, 190);
     return () => window.clearInterval(id);

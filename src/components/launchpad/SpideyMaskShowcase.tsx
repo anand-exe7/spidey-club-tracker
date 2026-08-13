@@ -7,13 +7,13 @@ export function SpideyMaskShowcase() {
   const [expression, setExpression] = useState<EyeExpression>("normal");
   const [pose, setPose] = useState<SpideyPose>("mask");
   const [isSwinging, setIsSwinging] = useState(false);
-  const [activeQuip, setActiveQuip] = useState<string | null>("SELECT SUIT & MASK HUD!");
+  const [activeQuip, setActiveQuip] = useState<string | null>("CODEKRAFTERS SUIT LAB!");
 
   const suits: { id: SpideySuit; name: string; badge: string; color: string }[] = [
-    { id: "classic", name: "CLASSIC RED & BLUE", badge: "ORIGINAL", color: "bg-red-600" },
-    { id: "symbiote", name: "SYMBIOTE BLACK SUIT", badge: "ALIEN VENOM", color: "bg-slate-900" },
-    { id: "iron", name: "IRON SPIDER ARMOR", badge: "STARK TECH", color: "bg-amber-600" },
-    { id: "miles", name: "MILES MORALES SUIT", badge: "BROOKLYN", color: "bg-rose-900" },
+    { id: "classic", name: "CLASSIC RED & BLUE", badge: "ORIGINAL", color: "bg-[#FA7604]" },
+    { id: "symbiote", name: "SYMBIOTE BLACK SUIT", badge: "ALIEN VENOM", color: "bg-black" },
+    { id: "iron", name: "IRON SPIDER ARMOR", badge: "STARK TECH", color: "bg-[#F97316]" },
+    { id: "miles", name: "MILES MORALES SUIT", badge: "BROOKLYN", color: "bg-[#B4530A]" },
   ];
 
   const expressions: { id: EyeExpression; label: string }[] = [
@@ -31,7 +31,7 @@ export function SpideyMaskShowcase() {
 
   const triggerThwip = () => {
     playThwipSound();
-    setActiveQuip("THWIP! WEB SHOT!");
+    setActiveQuip("THWIP! CODE WEBBED!");
     setPose("thwip");
     window.setTimeout(() => setPose("mask"), 1000);
   };
@@ -41,7 +41,7 @@ export function SpideyMaskShowcase() {
     playSwingSound();
     setPose("swinging");
     setExpression("squint");
-    setActiveQuip("SWOOSH! MAXIMUM SPEED!");
+    setActiveQuip("MAXIMUM CODEKRAFTER SPEED!");
     window.setTimeout(() => {
       setIsSwinging(false);
       setPose("mask");
@@ -52,7 +52,7 @@ export function SpideyMaskShowcase() {
   const triggerSense = () => {
     playSpiderSenseSound();
     setExpression("wide");
-    setActiveQuip("⚡ SPIDER-SENSE TINGLING! ⚡");
+    setActiveQuip("⚡ CODING-SENSE TINGLING! ⚡");
     window.setTimeout(() => setExpression("normal"), 1500);
   };
 
@@ -70,19 +70,19 @@ export function SpideyMaskShowcase() {
             onClick={triggerThwip}
             className="border-2 border-frame-light bg-primary px-3 py-2 text-[8px] text-primary-foreground transition-transform hover:scale-105 active:scale-95"
           >
-            ⚡ THWIP WEB!
+            ⚡ THWIP CODE!
           </button>
           <button
             onClick={triggerSwing}
             className="border-2 border-frame-light bg-secondary px-3 py-2 text-[8px] text-secondary-foreground transition-transform hover:scale-105 active:scale-95"
           >
-            🕸️ SWING HERO!
+            🕸️ SWING CODEX!
           </button>
           <button
             onClick={triggerSense}
             className="border-2 border-frame-dark bg-web-yellow px-3 py-2 text-[8px] text-background transition-transform hover:scale-105 active:scale-95"
           >
-            ⚡ SPIDER-SENSE!
+            ⚡ CODE-SENSE!
           </button>
         </div>
       </div>
@@ -117,7 +117,7 @@ export function SpideyMaskShowcase() {
           )}
 
           <p className="mt-4 text-[7px] tracking-widest text-muted-foreground">
-            CLICK SPIDEY TO THWIP WEB
+            CLICK SPIDEY TO THWIP CODE
           </p>
         </div>
 
@@ -135,7 +135,7 @@ export function SpideyMaskShowcase() {
                   onClick={() => {
                     setSuit(s.id);
                     playThwipSound();
-                    setActiveQuip(`EQUIPPED ${s.name}`);
+                    setActiveQuip(`EQUIPPED ${s.name} • CK SUIT`);
                   }}
                   className={`flex items-center justify-between border-4 px-3 py-3 text-left transition-all ${
                     suit === s.id

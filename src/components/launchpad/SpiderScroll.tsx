@@ -20,6 +20,7 @@ export function SpiderScroll() {
   const [pose, setPose] = useState<SpideyPose>("hanging");
   const [quip, setQuip] = useState<string | null>(null);
   const [tiltAngle, setTiltAngle] = useState(0);
+  const [holdSide, setHoldSide] = useState<"left" | "right">("right");
 
   const lastSoundTime = useRef<number>(0);
 
@@ -80,6 +81,10 @@ export function SpiderScroll() {
         const targetTilt = Math.max(-25, Math.min(25, vx * 4.5));
         setTiltAngle((currentTilt) => currentTilt + (targetTilt - currentTilt) * 0.08);
 
+        // Swap which hand holds the CK logo based on travel direction
+        if (vx > 0.3) setHoldSide("right");
+        else if (vx < -0.3) setHoldSide("left");
+
         return { x: nextX, y: nextY };
       });
 
@@ -97,7 +102,7 @@ export function SpiderScroll() {
     playThwipSound();
     setPose("thwip");
     setExpression("wide");
-    setQuip(`SUIT SWAP! 🕷️`);
+    setQuip(`SUIT SWAPPED • CODEKRAFTERS 🕷️`);
 
     window.setTimeout(() => {
       setPose("hanging");
@@ -159,9 +164,21 @@ export function SpiderScroll() {
             interactive
           />
 
+          {/* CK Logo held by Spidey */}
+          <img
+            src="/ck.svg"
+            alt="CodeKrafters"
+            draggable={false}
+            className="absolute h-[26px] w-[26px] pointer-events-none select-none"
+            style={{
+              left: holdSide === "right" ? "46px" : "-4px",
+              top: "22px",
+            }}
+          />
+
           {/* Tooltip */}
           <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap rounded border border-frame-dark bg-card px-2 py-0.5 text-[7px] text-primary uppercase">
-            CLICK TO SWAP SUIT
+            CLICK TO SWAP CODEX SUIT
           </span>
         </div>
 

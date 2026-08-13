@@ -20,7 +20,14 @@ export function Frame({ children }: { children: ReactNode }) {
         </div>
 
         <div className="absolute left-2 top-2 z-20 hidden flex-col gap-2 sm:flex">
-          <CornerBadge label="CK" />
+          <div className="flex h-9 w-9 items-center justify-center border-4 border-frame-dark bg-frame-light p-1">
+            <img
+              src="/ck.svg"
+              alt="CodeKrafters"
+              className="h-full w-full object-contain"
+              draggable={false}
+            />
+          </div>
           <CornerBadge label="01" />
           <CornerBadge label="02" />
         </div>
