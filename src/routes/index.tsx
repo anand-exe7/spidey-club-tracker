@@ -9,7 +9,9 @@ import { PixelSpider } from "@/components/launchpad/PixelSpider";
 import { SpideyMaskShowcase } from "@/components/launchpad/SpideyMaskShowcase";
 import { SpideyTracker } from "@/components/launchpad/SpideyTracker";
 import { playThwipSound } from "@/lib/spideyAudio";
-import { DOMAINS, ABOUT_PARAS, STATS, VALUES, TIMELINE, FAQS } from "@/components/launchpad/data";
+import { toast } from "sonner";
+import { QRCodeSVG } from "qrcode.react";
+import { DOMAINS, ABOUT_PARAS, STATS, VALUES, TIMELINE } from "@/components/launchpad/data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,7 +45,6 @@ function SectionLabel({ children }: { children: string }) {
 
 function Index() {
   const [stage, setStage] = useState<"boot" | "globe" | "landing">("boot");
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
     <>
@@ -81,7 +82,10 @@ function Index() {
             <p className="relative text-[9px] tracking-[0.4em] text-accent sm:text-[10px] uppercase">
               CODEKRAFTERS CLUB PRESENTS
             </p>
-            <h1 className="relative mt-4 text-3xl leading-tight text-foreground text-glow sm:text-6xl">
+            <h1 
+              className="relative mt-4 text-3xl leading-tight text-foreground text-glow sm:text-6xl glitch"
+              data-text="LAUNCHPAD"
+            >
               LAUNCHPAD
             </h1>
             <h2 className="relative mt-4 text-[10px] leading-6 text-primary sm:text-sm max-w-lg mx-auto">
@@ -121,7 +125,7 @@ function Index() {
             </div>
 
             <p className="relative mt-10 text-[8px] tracking-widest text-muted-foreground uppercase">
-              TAP SPIDEY TO SWAP SUIT • SCROLL TO EXPLORE ↓
+              DOUBLE CLICK TO SWAP SUIT • SCROLL TO EXPLORE ↓
             </p>
           </section>
 
@@ -201,46 +205,46 @@ function Index() {
               EVERY NODE OF THE CODEKRAFTERS WEB
             </p>
 
-            <div className="mt-12 space-y-8 max-w-4xl mx-auto">
+            <div className="mt-8 flex flex-row gap-6 overflow-x-auto snap-x snap-mandatory pb-4 sm:flex-col sm:gap-8 sm:overflow-visible sm:snap-none sm:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] max-w-4xl mx-auto">
               {DOMAINS.map((domain, index) => (
                 <div
                   key={domain.id}
-                  className="border-4 border-frame bg-card p-6 sm:p-8 transition-transform hover:-translate-y-1 shadow-md"
+                  className="w-full shrink-0 snap-center sm:w-auto sm:shrink sm:snap-align-none border-4 border-frame bg-card p-4 sm:p-8 transition-transform hover:-translate-y-1 shadow-md"
                 >
-                  <div className="flex flex-wrap items-center justify-between gap-4 border-b-4 border-frame-dark pb-4">
-                    <div className="flex items-center gap-3">
-                      <span className="border-4 border-frame-dark bg-primary px-3 py-1.5 text-[9px] text-primary-foreground font-bold">
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b-4 border-frame-dark pb-3 sm:gap-4 sm:pb-4">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <span className="border-4 border-frame-dark bg-primary px-2 py-1 text-[8px] sm:px-3 sm:py-1.5 sm:text-[9px] text-primary-foreground font-bold">
                         NODE {String(index + 1).padStart(2, "0")}
                       </span>
                       <div>
-                        <h3 className="text-lg text-foreground sm:text-2xl font-bold">
+                        <h3 className="text-sm text-foreground sm:text-2xl font-bold leading-tight">
                           {domain.name}
                         </h3>
-                        <p className="text-[9px] text-muted-foreground">{domain.tagline}</p>
+                        <p className="text-[7px] sm:text-[9px] text-muted-foreground">{domain.tagline}</p>
                       </div>
                     </div>
 
-                    <span className="border-4 border-frame-dark bg-web-yellow px-3 py-1.5 text-[9px] text-background font-bold">
+                    <span className="border-4 border-frame-dark bg-web-yellow px-2 py-1 text-[7px] sm:px-3 sm:py-1.5 sm:text-[9px] text-background font-bold">
                       {domain.sfx}
                     </span>
                   </div>
 
                   {/* Domain Crew List */}
-                  <div className="mt-6">
-                    <p className="text-[8px] tracking-widest text-accent uppercase mb-3">
+                  <div className="mt-4 sm:mt-6">
+                    <p className="text-[7px] sm:text-[8px] tracking-widest text-accent uppercase mb-2 sm:mb-3">
                       DOMAIN CREW & LEADS
                     </p>
-                    <div className="grid gap-3 grid-cols-2 sm:grid-cols-4">
+                    <div className="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-4">
                       {domain.people.map((p) => (
                         <div
                           key={p.role}
-                          className="border-4 border-frame-dark bg-screen p-4 text-center transition-transform hover:scale-105"
+                          className="border-2 sm:border-4 border-frame-dark bg-screen p-2 sm:p-4 text-center transition-transform hover:scale-105"
                         >
-                          <div className="mx-auto flex h-10 w-10 items-center justify-center border-2 border-frame bg-primary text-[9px] text-primary-foreground font-bold">
+                          <div className="mx-auto flex h-6 w-6 sm:h-10 sm:w-10 items-center justify-center border-2 border-frame bg-primary text-[7px] sm:text-[9px] text-primary-foreground font-bold">
                             CK
                           </div>
-                          <p className="mt-3 text-[9px] font-bold text-foreground">{p.role}</p>
-                          <p className="mt-1 text-[8px] text-accent">{p.title}</p>
+                          <p className="mt-2 text-[8px] sm:text-[9px] font-bold text-foreground">{p.role}</p>
+                          <p className="text-[7px] sm:text-[8px] text-accent">{p.title}</p>
                         </div>
                       ))}
                     </div>
@@ -277,42 +281,7 @@ function Index() {
             </div>
           </section>
 
-          {/* 04 // FREQUENTLY ASKED QUESTIONS */}
-          <section id="faq" className="border-b-4 border-frame-dark px-6 py-16 sm:px-12">
-            <SectionLabel>04 // FREQUENTLY ASKED</SectionLabel>
-            <h2 className="mt-4 text-center text-xl text-foreground sm:text-3xl">
-              Questions & Answers
-            </h2>
-            <p className="mt-3 text-center text-[9px] tracking-widest text-accent uppercase">
-              EVERYTHING YOU NEED TO KNOW
-            </p>
-
-            <div className="mt-10 max-w-2xl mx-auto">
-              {FAQS.map((f, i) => {
-                const open = openFaq === i;
-                return (
-                  <div key={f.q} className="mb-4 border-4 border-frame-dark bg-card">
-                    <button
-                      onClick={() => setOpenFaq(open ? null : i)}
-                      className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-                    >
-                      <span className="text-[9px] font-bold leading-5 text-foreground sm:text-[10px]">
-                        {f.q}
-                      </span>
-                      <span className="text-[12px] font-bold text-primary">{open ? "−" : "+"}</span>
-                    </button>
-                    {open && (
-                      <p className="border-t-4 border-frame-dark bg-screen px-5 py-4 text-[8px] leading-6 text-muted-foreground sm:text-[9px]">
-                        {f.a}
-                      </p>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* 05 // READY TO ENTER THE WEB CTA */}
+          {/* 04 // READY TO ENTER THE WEB CTA */}
           <section className="border-b-4 border-frame-dark px-6 py-20 text-center sm:px-12">
             <div className="relative">
               <div className="mx-auto h-12 w-[2px] bg-foreground/60" />
@@ -330,13 +299,16 @@ function Index() {
             <p className="mt-3 text-[9px] text-muted-foreground sm:text-[11px]">
               Join CodeKrafters and build your first project with us.
             </p>
-            <a
-              href="#club-domains"
-              onClick={() => playThwipSound()}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                playThwipSound();
+                toast("Club registrations are not yet open! Stay tuned.");
+              }}
               className="mt-8 inline-block border-4 border-frame-light bg-primary px-6 py-3.5 text-[9px] text-primary-foreground transition-transform hover:-translate-y-0.5 sm:text-[10px] font-bold"
             >
               JOIN CODEKRAFTERS CLUB →
-            </a>
+            </button>
           </section>
 
           {/* 06 // SPIDEY MASK & SUIT HUD LAB */}
@@ -345,8 +317,32 @@ function Index() {
           </section>
 
           {/* 07 // SPIDEY TRACKER DASHBOARD */}
-          <section id="spidey-tracker" className="px-6 py-12 sm:px-12">
+          <section id="spidey-tracker" className="px-6 py-12 sm:px-12 border-b-4 border-frame-dark">
             <SpideyTracker />
+          </section>
+
+          {/* 08 // CONNECT QR CODE */}
+          <section className="px-6 py-16 sm:px-12 flex flex-col items-center text-center">
+            <h2 className="text-xl text-foreground sm:text-3xl mb-4">CONNECT</h2>
+            <p className="text-[9px] text-muted-foreground sm:text-[11px] mb-8">
+              SCAN TO ACCESS ALL CLUB LINKS
+            </p>
+            <div className="border-4 border-frame-dark bg-transparent p-4 shadow-lg transition-transform hover:scale-105 cursor-pointer text-primary" onClick={() => {window.location.href = "/links"}}>
+              <QRCodeSVG 
+                value="https://spideytracker.net/links" 
+                size={180} 
+                bgColor="transparent" 
+                fgColor="currentColor" 
+                level="Q"
+                className="rendering-pixelated"
+              />
+            </div>
+            <a 
+              href="/links"
+              className="mt-6 text-[9px] text-primary font-bold hover:underline tracking-widest uppercase"
+            >
+              OR CLICK HERE TO VIEW LINKS
+            </a>
           </section>
 
           {/* BOTTOM STATUS BAR */}

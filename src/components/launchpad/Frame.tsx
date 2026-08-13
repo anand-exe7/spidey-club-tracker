@@ -10,11 +10,18 @@ function CornerBadge({ label }: { label: string }) {
 
 export function Frame({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen p-2 sm:p-4">
+    <div className="min-h-screen p-2 pt-12 sm:p-4 sm:pt-16">
       <div className="relative border-8 border-frame bg-frame/40 p-2 sm:p-3">
         {/* top header pill */}
-        <div className="pointer-events-none absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2">
-          <div className="border-4 border-frame-light bg-background px-3 py-1.5 text-[8px] tracking-widest text-foreground sm:px-4 sm:py-2 sm:text-xs">
+        <div className="pointer-events-none absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+          <img 
+            src="/top_ornament.png" 
+            alt="Ornament" 
+            className="w-28 sm:w-32 h-auto -mb-[4px]" 
+            style={{ filter: "hue-rotate(55deg) saturate(1.5)" }}
+            draggable={false}
+          />
+          <div className="flex items-center gap-2 whitespace-nowrap border-4 border-frame-light bg-background px-3 py-1.5 text-[8px] tracking-widest text-foreground sm:px-4 sm:py-2 sm:text-xs">
             CODEKRAFTERS <span className="text-primary">◼</span> LAUNCHPAD
           </div>
         </div>
