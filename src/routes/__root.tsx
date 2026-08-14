@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=670, user-scalable=no" },
       { title: "CodeKrafters Launchpad" },
       { name: "description", content: "CodeKrafters Launchpad — your first step into the web." },
       { name: "author", content: "CodeKrafters" },
@@ -112,7 +112,7 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+        <meta name="viewport" content="width=670, user-scalable=no" />
         <HeadContent />
       </head>
       <body>

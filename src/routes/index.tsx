@@ -18,8 +18,8 @@ function LinkedInLogo() {
   return (
     <svg
       viewBox="0 0 24 24"
-      width="16"
-      height="16"
+      width="40"
+      height="40"
       fill="currentColor"
       className="text-foreground"
     >
@@ -97,7 +97,7 @@ function Index() {
       {stage === "landing" && (
         <Frame>
           {/* HERO SECTION */}
-          <section className="relative flex min-h-[80svh] flex-col items-center justify-center px-4 py-20 text-center sm:min-h-[82vh]">
+          <section className="relative flex min-h-[60svh] flex-col items-center justify-center px-4 py-10 text-center sm:min-h-[82vh] sm:py-20">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-10"
@@ -125,7 +125,7 @@ function Index() {
               CODEKRAFTERS CLUB PRESENTS
             </p>
             <h1
-              className="relative mt-4 text-3xl leading-tight text-foreground text-glow sm:text-6xl glitch"
+              className="relative mt-4 text-2xl leading-tight text-foreground text-glow sm:text-6xl glitch"
               data-text="LAUNCHPAD"
             >
               LAUNCHPAD
@@ -182,9 +182,9 @@ function Index() {
           />
 
           {/* 01 // ABOUT US SECTION */}
-          <section id="about" className="border-b-4 border-frame-dark px-6 py-16 sm:px-12">
+          <section id="about" className="border-b-4 border-frame-dark px-6 py-8 sm:px-12 sm:py-16">
             <SectionLabel>01 // ABOUT CODEKRAFTERS</SectionLabel>
-            <h2 className="mt-4 text-center text-xl text-foreground sm:text-3xl">
+            <h2 className="mt-4 text-center text-lg text-foreground sm:text-3xl">
               Welcome to the web.
             </h2>
 
@@ -226,9 +226,9 @@ function Index() {
             </div>
 
             {/* Club Core Values */}
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
+            <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 max-w-5xl mx-auto">
               {VALUES.map((v) => (
-                <div key={v.title} className="border-4 border-frame-dark bg-card p-5 text-center">
+                <div key={v.title} className="border-4 border-frame-dark bg-card p-3 sm:p-5 text-center">
                   <span className="text-base text-primary">{v.icon}</span>
                   <p className="mt-3 text-[10px] font-bold leading-5 text-foreground">{v.title}</p>
                   <p className="mt-2 text-[8px] leading-5 text-muted-foreground">{v.text}</p>
@@ -238,9 +238,9 @@ function Index() {
           </section>
 
           {/* 02 // CLUB DOMAINS (Single Domain View Carousel) */}
-          <section id="club-domains" className="border-b-4 border-frame-dark px-6 py-16 sm:px-12">
+          <section id="club-domains" className="border-b-4 border-frame-dark px-6 py-8 sm:px-12 sm:py-16">
             <SectionLabel>02 // CLUB DOMAINS</SectionLabel>
-            <h2 className="mt-4 text-center text-xl text-foreground sm:text-3xl">
+            <h2 className="mt-4 text-center text-lg text-foreground sm:text-3xl">
               Explore All 7 Domains
             </h2>
             <p className="mt-3 text-center text-[9px] tracking-widest text-accent uppercase">
@@ -256,7 +256,7 @@ function Index() {
                     NODE 00
                   </span>
                   <div className="flex-1 text-center">
-                    <h3 className="text-xl sm:text-2xl text-web-yellow font-bold leading-tight break-words">
+                    <h3 className="text-lg sm:text-2xl text-web-yellow font-bold leading-tight break-words">
                       EXECUTIVE BOARD
                     </h3>
                     <p className="text-[10px] sm:text-xs font-bold text-accent uppercase tracking-widest break-words mt-1">
@@ -271,7 +271,7 @@ function Index() {
                   <p className="text-[10px] font-bold tracking-widest text-accent uppercase mb-6 text-center">
                     PRESIDENT & VICE PRESIDENT
                   </p>
-                  <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto">
+                  <div className="grid gap-4 sm:gap-8 grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto">
                     {LEADERSHIP.map((leader) => (
                       <div
                         key={leader.id}
@@ -295,7 +295,7 @@ function Index() {
                                 {leader.title}
                               </p>
                             </div>
-                            <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                            <h3 className="text-base sm:text-xl font-bold text-foreground">
                               {leader.name}
                             </h3>
                           </div>
@@ -341,26 +341,28 @@ function Index() {
                         {DOMAINS[currentDomainIndex]?.sfx}
                       </span>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl sm:text-3xl text-foreground font-bold">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl text-foreground font-bold break-words">
                         {DOMAINS[currentDomainIndex]?.name}
                       </h3>
-                      <p className="mt-2 text-[9px] sm:text-[10px] text-muted-foreground italic">{DOMAINS[currentDomainIndex]?.tagline}</p>
+                      <p className="mt-2 text-[9px] sm:text-[10px] text-muted-foreground italic truncate">
+                        {DOMAINS[currentDomainIndex]?.tagline}
+                      </p>
                     </div>
                   </div>
 
                   {/* Team — vertical portrait cards, heads then leads */}
-                  <div className="flex flex-wrap justify-center gap-5">
+                  <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3 sm:gap-5">
                     {[
                       ...((DOMAINS[currentDomainIndex]?.people ?? []).filter(p => p.title.toLowerCase() === 'head')),
                       ...((DOMAINS[currentDomainIndex]?.people ?? []).filter(p => p.title.toLowerCase() === 'lead')),
                     ].map((p) => (
                       <div
                         key={p.role}
-                        className="flex flex-col items-center bg-card border-4 border-frame-dark rounded-2xl px-5 py-6 w-[150px] sm:w-[170px] flex-shrink-0 transition-transform hover:-translate-y-1 shadow-md"
+                        className="mx-auto flex flex-col items-center justify-between bg-card border-4 border-frame-dark rounded-2xl px-2 py-4 sm:px-5 sm:py-6 w-full max-w-[140px] sm:max-w-[170px] flex-shrink-0 transition-transform hover:-translate-y-1 shadow-md"
                       >
                         {/* Circular photo */}
-                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-frame-dark overflow-hidden mb-4 bg-screen flex-shrink-0">
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full border-4 border-frame-dark overflow-hidden mb-3 sm:mb-4 bg-screen flex-shrink-0">
                           <img
                             src={p.image}
                             alt={p.role}
@@ -471,18 +473,18 @@ function Index() {
           </section>
 
           {/* 03 // THE SEMESTER LOOP */}
-          <section id="loop" className="border-b-4 border-frame-dark px-6 py-16 sm:px-12">
+          <section id="loop" className="border-b-4 border-frame-dark px-6 py-8 sm:px-12 sm:py-16">
             <SectionLabel>03 // THE SEMESTER LOOP</SectionLabel>
-            <h2 className="mt-4 text-center text-xl text-foreground sm:text-3xl">How It Runs</h2>
+            <h2 className="mt-4 text-center text-lg text-foreground sm:text-3xl">How It Runs</h2>
             <p className="mt-3 text-center text-[9px] tracking-widest text-accent uppercase">
               OUR SEMESTER DEVELOPMENT CYCLE
             </p>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
+            <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4 max-w-5xl mx-auto">
               {TIMELINE.map((t, i) => (
                 <div
                   key={t.phase}
-                  className="relative border-4 border-frame-dark bg-card p-6 text-center shadow"
+                  className="relative border-4 border-frame-dark bg-card p-3 sm:p-6 text-center shadow"
                 >
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 border-4 border-frame-dark bg-web-yellow px-3 py-1 text-[7px] font-bold text-background uppercase">
                     {t.phase}
@@ -498,7 +500,7 @@ function Index() {
           </section>
 
           {/* 04 // READY TO ENTER THE WEB CTA */}
-          <section className="border-b-4 border-frame-dark px-6 py-20 text-center sm:px-12">
+          <section className="border-b-4 border-frame-dark px-6 py-10 text-center sm:px-12 sm:py-20">
             <div className="relative">
               <div className="mx-auto h-12 w-[2px] bg-foreground/60" />
               <PixelSpider
@@ -511,7 +513,7 @@ function Index() {
                 className="mx-auto"
               />
             </div>
-            <h2 className="mt-6 text-xl text-foreground sm:text-3xl">Ready to enter the web?</h2>
+            <h2 className="mt-6 text-lg text-foreground sm:text-3xl">Ready to enter the web?</h2>
             <p className="mt-3 text-[9px] text-muted-foreground sm:text-[11px]">
               Join CodeKrafters and build your first project with us.
             </p>
@@ -528,25 +530,25 @@ function Index() {
           </section>
 
           {/* 06 // SPIDEY MASK & SUIT HUD LAB */}
-          <section id="spidey-hud" className="px-6 py-12 sm:px-12 border-b-4 border-frame-dark">
+          <section id="spidey-hud" className="px-6 py-8 sm:px-12 sm:py-12 border-b-4 border-frame-dark">
             <SpideyMaskShowcase />
           </section>
 
           {/* 07 // SPIDEY TRACKER DASHBOARD */}
-          <section id="spidey-tracker" className="px-6 py-12 sm:px-12 border-b-4 border-frame-dark">
+          <section id="spidey-tracker" className="px-6 py-8 sm:px-12 sm:py-12 border-b-4 border-frame-dark overflow-hidden w-full max-w-[100vw]">
             <SpideyTracker />
           </section>
 
           {/* 08 // CONNECT QR CODE */}
-          <section className="px-6 py-16 sm:px-12 flex flex-col items-center text-center">
-            <h2 className="text-xl text-foreground sm:text-3xl mb-4">CONNECT</h2>
+          <section className="px-6 py-8 sm:px-12 sm:py-16 flex flex-col items-center text-center">
+            <h2 className="text-lg text-foreground sm:text-3xl mb-4">CONNECT</h2>
             <p className="text-[9px] text-muted-foreground sm:text-[11px] mb-8">
               SCAN TO ACCESS ALL CLUB LINKS
             </p>
 
             <div className="border-4 border-frame-dark bg-transparent p-4 shadow-lg transition-transform hover:scale-105 cursor-pointer text-primary" onClick={() => { window.location.href = "/links" }}>
               <QRCodeSVG
-                value="https://spideytracker.net/links"
+                value="https://launchpad-ck.vercel.app/links"
                 size={180}
                 bgColor="transparent"
                 fgColor="currentColor"
@@ -610,7 +612,7 @@ function Index() {
           <div className="flex flex-wrap items-center justify-between gap-3 border-t-4 border-frame-dark bg-background px-6 py-4">
             <span className="text-[8px] text-accent font-bold">● SYSTEM ONLINE</span>
             <span className="text-[8px] text-muted-foreground">
-              CODEKRAFTERS CLUB • LAUNCHPAD 2026 • SPIDEYTRACKER.NET
+              CODEKRAFTERS CLUB • LAUNCHPAD 2026 • LAUNCHPAD-CK.VERCEL.APP
             </span>
           </div>
         </Frame>

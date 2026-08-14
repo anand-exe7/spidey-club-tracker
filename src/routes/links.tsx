@@ -107,8 +107,8 @@ function LinksPage() {
         </div>
 
         {/* Links Container */}
-        <div className="max-w-4xl mx-auto w-full flex-1 mb-12">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+        <div className="max-w-5xl mx-auto w-full flex-1 mb-12">
+          <div className="flex flex-col sm:flex-row justify-center items-stretch gap-6 sm:gap-8">
             {links.map((link) => (
               <a
                 key={link.label}
@@ -117,7 +117,7 @@ function LinksPage() {
                 rel="noopener noreferrer"
                 onMouseEnter={() => setHoveredLink(link.label)}
                 onMouseLeave={() => setHoveredLink(null)}
-                className="group relative h-full"
+                className="group relative h-full flex-1"
               >
                 {/* Background shimmer effect on hover */}
                 <div

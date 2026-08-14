@@ -85,6 +85,7 @@
     color: var(--color-foreground);
     font-family: var(--font-pixel);
     -webkit-font-smoothing: none;
+    touch-action: manipulation;
   }
 
   h1, h2, h3 {
