@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Frame } from "@/components/launchpad/Frame";
 import { Preloader } from "@/components/launchpad/Preloader";
 import { GlobeIntro } from "@/components/launchpad/GlobeIntro";
@@ -11,17 +11,17 @@ import { SpideyTracker } from "@/components/launchpad/SpideyTracker";
 import { playThwipSound } from "@/lib/spideyAudio";
 import { toast } from "sonner";
 import { QRCodeSVG } from "qrcode.react";
-import { DOMAINS, ABOUT_PARAS, STATS, VALUES, TIMELINE } from "@/components/launchpad/data";
+import { DOMAINS, ABOUT_PARAS, STATS, VALUES, TIMELINE, LEADERSHIP } from "@/components/launchpad/data";
 
 // LinkedIn Logo Component
 function LinkedInLogo() {
   return (
     <svg
       viewBox="0 0 24 24"
-      width="40"
-      height="40"
+      width="16"
+      height="16"
       fill="currentColor"
-      className="text-blue-600"
+      className="text-foreground"
     >
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
     </svg>
@@ -56,7 +56,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Explore the CodeKrafters club web: Development, Web3, Content, Creative, CP, PR and Management.",
+          "Explore the CodeKrafters club web: Development, Web3, Content, Creative, Competitive Programming, PR and Management.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -75,6 +75,18 @@ function SectionLabel({ children }: { children: string }) {
 
 function Index() {
   const [stage, setStage] = useState<"boot" | "globe" | "landing">("boot");
+  const [currentDomainIndex, setCurrentDomainIndex] = useState(0);
+
+  // Auto-advance domains carousel
+  useEffect(() => {
+    if (stage !== "landing") return;
+
+    const interval = setInterval(() => {
+      setCurrentDomainIndex((prev) => (prev === DOMAINS.length - 1 ? 0 : prev + 1));
+    }, 6000); // Change domain every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [stage, currentDomainIndex]);
 
   return (
     <>
@@ -112,7 +124,7 @@ function Index() {
             <p className="relative text-[9px] tracking-[0.4em] text-accent sm:text-[10px] uppercase">
               CODEKRAFTERS CLUB PRESENTS
             </p>
-            <h1 
+            <h1
               className="relative mt-4 text-3xl leading-tight text-foreground text-glow sm:text-6xl glitch"
               data-text="LAUNCHPAD"
             >
@@ -225,7 +237,7 @@ function Index() {
             </div>
           </section>
 
-          {/* 02 // CLUB DOMAINS (Continuous Vertical Display) */}
+          {/* 02 // CLUB DOMAINS (Single Domain View Carousel) */}
           <section id="club-domains" className="border-b-4 border-frame-dark px-6 py-16 sm:px-12">
             <SectionLabel>02 // CLUB DOMAINS</SectionLabel>
             <h2 className="mt-4 text-center text-xl text-foreground sm:text-3xl">
@@ -235,6 +247,7 @@ function Index() {
               EVERY NODE OF THE CODEKRAFTERS WEB
             </p>
 
+            {/* EXECUTIVE BOARD - VERTICAL SECTION */}
             <div className="mt-8 flex flex-col gap-6 sm:gap-10 max-w-7xl mx-auto w-full px-2 sm:px-6">
               {/* NODE 00: EXECUTIVE BOARD */}
               <div className="w-full border-4 border-web-yellow bg-card p-3 sm:p-8 transition-transform hover:-translate-y-1 shadow-md">
@@ -255,127 +268,205 @@ function Index() {
                 </div>
 
                 <div className="mt-8 sm:mt-12">
-                  <p className="text-[10px] font-bold tracking-widest text-accent uppercase mb-4 text-center">
+                  <p className="text-[10px] font-bold tracking-widest text-accent uppercase mb-6 text-center">
                     PRESIDENT & VICE PRESIDENT
                   </p>
-                  <div className="grid gap-3 grid-cols-2 sm:grid-cols-4">
-                    {/* President Card */}
-                    <div className="sm:col-start-2 border-4 border-frame-dark bg-screen transition-transform hover:scale-105 flex flex-col items-stretch h-full shadow-sm overflow-hidden">
-                      <div className="shrink-0 w-full border-b-4 border-frame-dark bg-primary flex">
-                        <img 
-                          src="/domain_pics/pres/Sanjay.jpeg"
-                          alt="Sanjay"
-                          className="w-full h-full object-cover aspect-square"
-                        />
+                  <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto">
+                    {LEADERSHIP.map((leader) => (
+                      <div
+                        key={leader.id}
+                        className="border-4 border-frame-light bg-screen transition-transform hover:scale-105 flex flex-col overflow-hidden shadow-lg"
+                      >
+                        {/* Profile Image */}
+                        <div className="w-full border-b-4 border-frame-dark bg-primary overflow-hidden">
+                          <img
+                            src={leader.image}
+                            alt={leader.name}
+                            className="w-full h-auto object-cover aspect-square"
+                          />
+                        </div>
+
+                        {/* Card Content */}
+                        <div className="flex-1 p-4 sm:p-6 flex flex-col justify-between">
+                          {/* Header */}
+                          <div className="mb-4 sm:mb-6">
+                            <div className="inline-block border-2 border-web-yellow bg-web-yellow px-2 py-1 mb-3">
+                              <p className="text-[7px] sm:text-[8px] text-background font-bold uppercase tracking-widest">
+                                {leader.title}
+                              </p>
+                            </div>
+                            <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                              {leader.name}
+                            </h3>
+                          </div>
+
+                          {/* Description */}
+                          <p className="text-[8px] sm:text-[9px] leading-5 sm:leading-6 text-muted-foreground mb-4 flex-1">
+                            {leader.description}
+                          </p>
+
+                          {/* LinkedIn Button */}
+                          {leader.linkedin && (
+                            <a
+                              href={leader.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2 border-4 border-frame-dark bg-card hover:bg-primary hover:text-primary-foreground hover:border-frame-light px-3 py-2 text-[8px] sm:text-[9px] text-foreground font-bold uppercase tracking-widest transition-all"
+                              onClick={() => playThwipSound()}
+                            >
+                              <LinkedInLogo />
+                              <span>Connect on LinkedIn</span>
+                            </a>
+                          )}
+                        </div>
                       </div>
-                      <div className="flex-1 p-2 sm:p-4 flex flex-col justify-center text-center">
-                        <p className="text-[11px] sm:text-sm font-bold text-foreground break-words">Sanjay</p>
-                        <p className="mt-1 text-[9px] sm:text-[10px] font-bold text-web-yellow uppercase tracking-widest">President</p>
-                      </div>
-                    </div>
-                    
-                    {/* Vice President Card */}
-                    <div className="border-4 border-frame-dark bg-screen transition-transform hover:scale-105 flex flex-col items-stretch h-full shadow-sm overflow-hidden">
-                      <div className="shrink-0 w-full border-b-4 border-frame-dark bg-primary flex">
-                        <img 
-                          src="/domain_pics/vp/Satya VP.png"
-                          alt="Satya"
-                          className="w-full h-full object-cover aspect-square"
-                        />
-                      </div>
-                      <div className="flex-1 p-2 sm:p-4 flex flex-col justify-center text-center">
-                        <p className="text-[11px] sm:text-sm font-bold text-foreground break-words">Satya</p>
-                        <p className="mt-1 text-[9px] sm:text-[10px] font-bold text-web-yellow uppercase tracking-widest">Vice President</p>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
+            </div>
 
-              {DOMAINS.map((domain, index) => (
-                <div
-                  key={domain.id}
-                  className="w-full border-4 border-frame bg-card p-3 sm:p-8 transition-transform hover:-translate-y-1 shadow-md"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-4 border-frame-dark pb-4">
-                    <span className="self-center sm:self-start border-4 border-frame-dark bg-primary px-3 py-1.5 text-[9px] text-primary-foreground font-bold">
-                      NODE {String(index + 1).padStart(2, "0")}
-                    </span>
-
-                    <div className="flex-1 text-center">
-                      <h3 className="text-xl sm:text-2xl text-foreground font-bold leading-tight break-words">
-                        {domain.name}
-                      </h3>
-                      <p className="mt-1 text-[8px] sm:text-[9px] text-muted-foreground break-words">{domain.tagline}</p>
+            {/* DOMAINS CAROUSEL - One Domain at a Time */}
+            <div className="mt-16 max-w-5xl mx-auto">
+              {/* Current Domain Display */}
+              {DOMAINS[currentDomainIndex] && (
+                <div className="w-full border-4 border-frame bg-card p-6 sm:p-10 shadow-lg">
+                  {/* Domain Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-4 border-frame-dark pb-6 mb-8">
+                    <div className="flex items-center gap-3">
+                      <span className="border-4 border-frame-dark bg-primary px-3 py-1.5 text-[8px] sm:text-[9px] text-primary-foreground font-bold">
+                        NODE {String(currentDomainIndex + 1).padStart(2, "0")}
+                      </span>
+                      <span className="border-4 border-frame-dark bg-web-yellow px-3 py-1.5 text-[8px] sm:text-[9px] text-background font-bold">
+                        {DOMAINS[currentDomainIndex]?.sfx}
+                      </span>
                     </div>
-
-                    <span className="self-center sm:self-auto border-4 border-frame-dark bg-web-yellow px-3 py-1.5 text-[9px] text-background font-bold">
-                      {domain.sfx}
-                    </span>
+                    <div className="flex-1">
+                      <h3 className="text-2xl sm:text-3xl text-foreground font-bold">
+                        {DOMAINS[currentDomainIndex]?.name}
+                      </h3>
+                      <p className="mt-2 text-[9px] sm:text-[10px] text-muted-foreground italic">{DOMAINS[currentDomainIndex]?.tagline}</p>
+                    </div>
                   </div>
 
-                  {/* Domain Crew List */}
-                  <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-8 sm:gap-3">
-                    {/* HEADS BLOCK */}
-                    {domain.people.filter(p => p.title.toLowerCase() === 'head').length > 0 && (
-                      <div className="w-full sm:w-1/2">
-                        <p className="text-[10px] font-bold tracking-widest text-accent uppercase mb-4 text-center sm:text-left">
-                          HEADS
-                        </p>
-                        <div className="grid gap-3 grid-cols-2">
-                          {domain.people.filter(p => p.title.toLowerCase() === 'head').map((p) => (
-                            <div
-                              key={p.role}
-                              className="border-4 border-frame-dark bg-screen transition-transform hover:scale-105 flex flex-col items-stretch h-full shadow-sm overflow-hidden"
-                            >
-                              <div className="shrink-0 w-full border-b-4 border-frame-dark bg-primary flex">
-                                <img 
-                                  src={p.image}
-                                  alt={p.role}
-                                  className="w-full h-full object-cover aspect-square"
-                                />
-                              </div>
-                              <div className="flex-1 p-2 sm:p-4 flex flex-col justify-center text-center">
-                                <p className="text-[11px] sm:text-sm font-bold text-foreground break-words">{p.role}</p>
-                                <p className="mt-1 text-[9px] sm:text-[10px] font-bold text-accent uppercase tracking-widest">{p.title}</p>
-                              </div>
-                            </div>
-                          ))}
+                  {/* Team — vertical portrait cards, heads then leads */}
+                  <div className="flex flex-wrap justify-center gap-5">
+                    {[
+                      ...((DOMAINS[currentDomainIndex]?.people ?? []).filter(p => p.title.toLowerCase() === 'head')),
+                      ...((DOMAINS[currentDomainIndex]?.people ?? []).filter(p => p.title.toLowerCase() === 'lead')),
+                    ].map((p) => (
+                      <div
+                        key={p.role}
+                        className="flex flex-col items-center bg-card border-4 border-frame-dark rounded-2xl px-5 py-6 w-[150px] sm:w-[170px] flex-shrink-0 transition-transform hover:-translate-y-1 shadow-md"
+                      >
+                        {/* Circular photo */}
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-frame-dark overflow-hidden mb-4 bg-screen flex-shrink-0">
+                          <img
+                            src={p.image}
+                            alt={p.role}
+                            className="w-full h-full object-cover"
+                            style={{ objectPosition: p.objectPosition ?? 'top' }}
+                          />
                         </div>
-                      </div>
-                    )}
 
-                    {/* LEADS BLOCK */}
-                    {domain.people.filter(p => p.title.toLowerCase() === 'lead').length > 0 && (
-                      <div className="w-full sm:w-1/2">
-                        <p className="text-[10px] font-bold tracking-widest text-accent uppercase mb-4 text-center sm:text-left">
-                          LEADS
+                        {/* Name */}
+                        <p className="text-[10px] sm:text-[11px] font-bold text-foreground text-center leading-snug mb-1">
+                          {p.role}
                         </p>
-                        <div className="grid gap-3 grid-cols-2">
-                          {domain.people.filter(p => p.title.toLowerCase() === 'lead').map((p) => (
-                            <div
-                              key={p.role}
-                              className="border-4 border-frame-dark bg-screen transition-transform hover:scale-105 flex flex-col items-stretch h-full shadow-sm overflow-hidden"
-                            >
-                              <div className="shrink-0 w-full border-b-4 border-frame-dark bg-primary flex">
-                                <img 
-                                  src={p.image}
-                                  alt={p.role}
-                                  className="w-full h-full object-cover aspect-square"
-                                />
-                              </div>
-                              <div className="flex-1 p-2 sm:p-4 flex flex-col justify-center text-center">
-                                <p className="text-[11px] sm:text-sm font-bold text-foreground break-words">{p.role}</p>
-                                <p className="mt-1 text-[9px] sm:text-[10px] font-bold text-accent uppercase tracking-widest">{p.title}</p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
+
+                        {/* Domain + Role label */}
+                        <p className="text-[7px] sm:text-[8px] font-bold uppercase tracking-widest text-accent text-center leading-tight mb-4">
+                          {DOMAINS[currentDomainIndex]?.name} {p.title}
+                        </p>
+
+                        {/* LinkedIn icon button — only shown when URL is provided */}
+                        {p.linkedin ? (
+                          <a
+                            href={p.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-auto flex items-center justify-center w-8 h-8 rounded-full bg-background border-2 border-frame-dark hover:bg-primary hover:border-frame-light transition-all"
+                            onClick={() => playThwipSound()}
+                            aria-label={`${p.role} LinkedIn`}
+                          >
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" className="text-foreground">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+                            </svg>
+                          </a>
+                        ) : (
+                          <div className="mt-auto w-8 h-8 rounded-full bg-background border-2 border-frame-dark opacity-20 flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" className="text-foreground">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+                            </svg>
+                          </div>
+                        )}
                       </div>
-                    )}
+                    ))}
                   </div>
                 </div>
-              ))}
+              )}
+
+              {/* Navigation Controls */}
+              <div className="mt-8 flex flex-col gap-6">
+                {/* Previous/Next Buttons */}
+                <div className="flex justify-center gap-4">
+                  <button
+                    onClick={() => {
+                      setCurrentDomainIndex((prev) => (prev === 0 ? DOMAINS.length - 1 : prev - 1));
+                      playThwipSound();
+                    }}
+                    className="border-4 border-frame-dark bg-card px-6 py-3 text-[9px] text-foreground uppercase font-bold transition-transform hover:scale-105"
+                  >
+                    ← PREVIOUS
+                  </button>
+                  <button
+                    onClick={() => {
+                      setCurrentDomainIndex((prev) => (prev === DOMAINS.length - 1 ? 0 : prev + 1));
+                      playThwipSound();
+                    }}
+                    className="border-4 border-frame-dark bg-card px-6 py-3 text-[9px] text-foreground uppercase font-bold transition-transform hover:scale-105"
+                  >
+                    NEXT →
+                  </button>
+                </div>
+
+                {/* Domain Navigation Dots */}
+                <div className="flex justify-center items-center gap-2 flex-wrap">
+                  {DOMAINS.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setCurrentDomainIndex(index);
+                        playThwipSound();
+                      }}
+                      className={`w-3 h-3 sm:w-4 sm:h-4 border-2 transition-all ${index === currentDomainIndex
+                        ? 'bg-primary border-primary'
+                        : 'border-frame-dark bg-card hover:bg-frame-dark'
+                        }`}
+                      title={DOMAINS[index]?.name}
+                    />
+                  ))}
+                </div>
+
+                {/* Domain Name Strip */}
+                <div className="w-full border-4 border-frame-dark bg-screen p-4 flex flex-wrap justify-center gap-3 items-center">
+                  {DOMAINS.map((domain, index) => (
+                    <button
+                      key={domain.id}
+                      onClick={() => {
+                        setCurrentDomainIndex(index);
+                        playThwipSound();
+                      }}
+                      className={`text-[8px] sm:text-[9px] px-3 py-2 border-2 uppercase font-bold tracking-widest transition-all ${index === currentDomainIndex
+                        ? 'bg-primary border-primary text-primary-foreground'
+                        : 'border-frame-dark text-foreground hover:bg-frame-dark'
+                        }`}
+                    >
+                      {domain.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
@@ -453,17 +544,17 @@ function Index() {
               SCAN TO ACCESS ALL CLUB LINKS
             </p>
 
-            <div className="border-4 border-frame-dark bg-transparent p-4 shadow-lg transition-transform hover:scale-105 cursor-pointer text-primary" onClick={() => {window.location.href = "/links"}}>
-              <QRCodeSVG 
-                value="https://spideytracker.net/links" 
-                size={180} 
-                bgColor="transparent" 
-                fgColor="currentColor" 
+            <div className="border-4 border-frame-dark bg-transparent p-4 shadow-lg transition-transform hover:scale-105 cursor-pointer text-primary" onClick={() => { window.location.href = "/links" }}>
+              <QRCodeSVG
+                value="https://spideytracker.net/links"
+                size={180}
+                bgColor="transparent"
+                fgColor="currentColor"
                 level="Q"
                 className="rendering-pixelated"
               />
             </div>
-            <a 
+            <a
               href="/links"
               className="mt-6 text-[9px] text-primary font-bold hover:underline tracking-widest uppercase"
             >
