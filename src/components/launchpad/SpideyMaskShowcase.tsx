@@ -57,7 +57,7 @@ export function SpideyMaskShowcase() {
   };
 
   return (
-    <div className="my-10 border-4 border-frame bg-screen p-6 sm:p-8">
+    <div className="my-6 sm:my-10 border-4 border-frame bg-screen p-4 sm:p-8 max-w-5xl mx-auto">
       <div className="flex flex-wrap items-center justify-between gap-4 border-b-4 border-frame-dark pb-4">
         <div>
           <span className="text-[8px] tracking-[0.3em] text-accent">INTERACTIVE LAB</span>
@@ -128,7 +128,7 @@ export function SpideyMaskShowcase() {
             <p className="text-[8px] tracking-widest text-accent uppercase mb-3">
               1. SELECT SPIDEY SUIT
             </p>
-            <div className="grid gap-2 sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-2">
               {suits.map((s) => (
                 <button
                   key={s.id}
@@ -137,7 +137,7 @@ export function SpideyMaskShowcase() {
                     playThwipSound();
                     setActiveQuip(`EQUIPPED ${s.name} • CK SUIT`);
                   }}
-                  className={`flex items-center justify-between border-4 px-3 py-3 text-left transition-all ${
+                  className={`flex flex-col items-center justify-center border-4 px-2 py-3 text-center gap-2 transition-all ${
                     suit === s.id
                       ? "border-primary bg-primary text-primary-foreground scale-[1.02]"
                       : "border-frame-dark bg-screen text-foreground hover:bg-card"

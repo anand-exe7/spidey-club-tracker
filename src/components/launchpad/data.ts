@@ -6,7 +6,7 @@ export type Domain = {
   skills: string[];
   projects: string[];
   sfx: string;
-  people: { role: string; title: string; image: string }[];
+  people: { role: string; title: string; image: string; objectPosition?: string; linkedin?: string }[];
 };
 
 export const DOMAINS: Domain[] = [
@@ -20,11 +20,11 @@ export const DOMAINS: Domain[] = [
     projects: ["Launchpad 2026 Platform", "Spidey Web Tracker", "Campus Event Portal"],
     sfx: "THWIP!",
     people: [
-      
-      { role: "Vinoth", title: "Head", image: "/domain_pics/dev/head/Vinoth.png" },
-      { role: "Anand", title: "Head", image: "/domain_pics/dev/head/Anand.jpg" },
-      { role: "Akshay", title: "Lead", image: "/domain_pics/dev/lead/Akshay.png" },
-      { role: "Vinod", title: "Lead", image: "/domain_pics/dev/lead/Vinod.png" },
+
+      { role: "Vinoth", title: "Head", image: "/domain_pics/dev/head/Vinoth.png", linkedin: "https://www.linkedin.com/in/vinoth-anand-gani-304126325/" },
+      { role: "Anand", title: "Head", image: "/domain_pics/dev/head/Anand.jpg", linkedin: "https://www.linkedin.com/in/anandsivarams/" },
+      { role: "Akshay", title: "Lead", image: "/domain_pics/dev/lead/Akshay.png", linkedin: "https://www.linkedin.com/in/akshay-p-9bb587355/" },
+      { role: "Abhishek", title: "Lead", image: "/domain_pics/dev/lead/Abhishek.jpeg", linkedin: "https://www.linkedin.com/in/abhishek-vinod-/" },
     ],
   },
   {
@@ -53,7 +53,7 @@ export const DOMAINS: Domain[] = [
     projects: ["CodeKrafters Guild Blog", "Developer Onboarding Guides", "Hackathon Recaps"],
     sfx: "THWIP!",
     people: [
-      { role: "Noorul Hatim", title: "Head", image: "/domain_pics/content/head/Noorul hatim.HEIC" },
+      { role: "Noorul Hatim", title: "Head", image: "/domain_pics/content/head/Noorul hatim.png" },
       { role: "Silvi", title: "Head", image: "/domain_pics/content/head/silvi.png" },
       { role: "Sana", title: "Lead", image: "/domain_pics/content/lead/Sana.png" },
       { role: "Vasanti", title: "Lead", image: "/domain_pics/content/lead/Vasanti .jpg" },
@@ -69,13 +69,15 @@ export const DOMAINS: Domain[] = [
     projects: ["Launchpad Retro Theme System", "Club Mascot & Emblem Suite", "Design System Tokens"],
     sfx: "WHAM!",
     people: [
+      { role: "Tanisha", title: "Head", image: "/domain_pics/creative/head/TANISHA PAVITHRAKUMAR.png", objectPosition: "center" },
+      { role: "Tito Ishwar", title: "Head", image: "/domain_pics/creative/head/Tito eshwar.JPG" },
       { role: "Kruthika", title: "Lead", image: "/domain_pics/creative/lead/kruthika.jpeg" },
       { role: "Neeraja", title: "Lead", image: "/domain_pics/creative/lead/neeraja.jpeg" },
     ],
   },
   {
     id: "cp",
-    name: "CP",
+    name: "Competitive programming",
     tagline: "Think. Code. Conquer.",
     description:
       "Mastering algorithmic problem solving, graph theory, dynamic programming, and speed coding contests. We train members for Codeforces, LeetCode, ICPC, and global coding battles.",
@@ -91,7 +93,7 @@ export const DOMAINS: Domain[] = [
   },
   {
     id: "pr",
-    name: "PR",
+    name: "PR and Management",
     tagline: "Make the world notice.",
     description:
       "Building industry partnerships, securing event sponsorships, managing social channels, and connecting CodeKrafters with tech leaders, alumni, and campus organizations.",
@@ -100,6 +102,7 @@ export const DOMAINS: Domain[] = [
     sfx: "WHAM!",
     people: [
       { role: "Siddhart", title: "Head", image: "/domain_pics/pr/head/Siddhart.png" },
+      { role: "Mahalakshmi", title: "Head", image: "/domain_pics/pr/head/Mahalakshmi.jpeg" },
       { role: "Ankita", title: "Lead", image: "/domain_pics/pr/lead/Ankita.png" },
       { role: "Ram", title: "Lead", image: "/domain_pics/pr/lead/Ram.png" },
       { role: "Tavishi", title: "Lead", image: "/domain_pics/pr/lead/Tavishi.png" },
@@ -115,7 +118,7 @@ export const DOMAINS: Domain[] = [
     projects: ["Campus CTF Hosting", "Vulnerability Scanner", "Security Awareness Campaign"],
     sfx: "THWIP!",
     people: [
-      { role: "Adithya Kridhna", title: "Head", image: "/domain_pics/cs/head/adithya kridhna.jpeg" },
+      { role: "Adithya Kridhna", title: "Head", image: "/domain_pics/cs/head/adithya kridhna.jpeg", objectPosition: "center" },
       { role: "Yogeswaran", title: "Head", image: "/domain_pics/cs/head/Yogeswaran.png" },
       { role: "Meyyamai", title: "Lead", image: "/domain_pics/cs/lead/MEYYAMAI.png" },
       { role: "Tejeshwar", title: "Lead", image: "/domain_pics/cs/lead/Tejeshwar.png" },
@@ -194,6 +197,34 @@ export const TIMELINE: { phase: string; title: string; text: string }[] = [
     title: "Launch Day Showcase",
     text: "Everything built during the semester goes live on stage. Then we reset the loop.",
   },
+];
+
+export type Leadership = {
+  id: string;
+  name: string;
+  title: string;
+  image: string;
+  description: string;
+  linkedin?: string;
+};
+
+export const LEADERSHIP: Leadership[] = [
+  {
+    id: "president",
+    name: "Sanjay",
+    title: "President",
+    image: "/domain_pics/pres/Sanjay.jpeg",
+    description: "Guiding CodeKrafters with clarity, creativity, and conviction — leading our community into one of SRM's most dynamic tech forces.",
+    linkedin: "https://www.linkedin.com/in/sanjay-ganesh-k-barade-675b38324/"
+  },
+  {
+    id: "vp",
+    name: "Satya",
+    title: "Vice President",
+    image: "/domain_pics/vp/Satya VP.png",
+    description: "Driving innovation and strategy across all domains — ensuring CodeKrafters remains at the forefront of student-led technical excellence.",
+    linkedin: "https://www.linkedin.com/in/satyalohith455/"
+  }
 ];
 
 export const FAQS: { q: string; a: string }[] = [

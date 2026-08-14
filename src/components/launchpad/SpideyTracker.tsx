@@ -58,7 +58,7 @@ export function SpideyTracker() {
   };
 
   return (
-    <div className="relative mt-16 mb-24 min-h-[800px] sm:min-h-[700px] w-full max-w-[1400px] mx-auto border-[6px] sm:border-[8px] border-frame-dark bg-screen overflow-hidden shadow-2xl">
+    <div className="relative mt-16 mb-24 min-h-[600px] md:min-h-[700px] w-full max-w-[1400px] mx-auto border-[6px] sm:border-[8px] border-frame-dark bg-screen overflow-hidden shadow-2xl">
       {/* Blueprint Grid Background */}
       <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, var(--frame-dark) 1px, transparent 1px), linear-gradient(to bottom, var(--frame-dark) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,var(--screen)_100%)] pointer-events-none" />
@@ -73,7 +73,7 @@ export function SpideyTracker() {
       </div>
 
       {/* Top Left Navigation Buttons */}
-      <div className="absolute top-12 left-0 sm:left-4 z-10 hidden sm:flex flex-col gap-4 pointer-events-none sm:pointer-events-auto scale-90 sm:scale-100 origin-top-left">
+      <div className="absolute top-12 left-0 sm:left-4 z-10 hidden md:flex flex-col gap-4 pointer-events-none sm:pointer-events-auto scale-90 sm:scale-100 origin-top-left">
         <div className="flex items-center group cursor-pointer pointer-events-auto">
           <div className="border-y-4 border-r-4 sm:border-4 border-frame-dark bg-card p-2 sm:p-3 hover:-translate-y-0.5 transition-transform">
             <PixelSpider size={20} suit="classic" pose="hanging" expression="squint" />
@@ -103,7 +103,7 @@ export function SpideyTracker() {
       </div>
 
       {/* Bottom Right: Radar Scanner */}
-      <div className="absolute bottom-16 sm:bottom-10 right-4 sm:right-10 z-10 hidden sm:flex flex-col items-end pointer-events-none scale-75 sm:scale-100 origin-bottom-right">
+      <div className="absolute bottom-16 sm:bottom-10 right-4 sm:right-10 z-10 hidden md:flex flex-col items-end pointer-events-none scale-75 sm:scale-100 origin-bottom-right">
         {/* Interactive Radar Circle */}
         <div className="relative flex h-32 w-32 sm:h-48 sm:w-48 items-center justify-center rounded-full border-4 border-primary/40 bg-screen shadow-inner backdrop-blur-md">
           {/* Concentric rings */}
