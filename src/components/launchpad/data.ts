@@ -6,12 +6,12 @@ export type Domain = {
   skills: string[];
   projects: string[];
   sfx: string;
-  people: { role: string; title: string }[];
+  people: { role: string; title: string; image: string }[];
 };
 
 export const DOMAINS: Domain[] = [
   {
-    id: "development",
+    id: "dev",
     name: "Development",
     tagline: "Build. Break. Deploy.",
     description:
@@ -20,15 +20,16 @@ export const DOMAINS: Domain[] = [
     projects: ["Launchpad 2026 Platform", "Spidey Web Tracker", "Campus Event Portal"],
     sfx: "THWIP!",
     people: [
-      { role: "Head 01", title: "Head" },
-      { role: "Head 02", title: "Head" },
-      { role: "Lead 01", title: "Lead" },
-      { role: "Lead 02", title: "Lead" },
+      
+      { role: "Vinoth", title: "Head", image: "/domain_pics/dev/head/Vinoth.png" },
+      { role: "Anand", title: "Head", image: "/domain_pics/dev/head/Anand.jpg" },
+      { role: "Akshay", title: "Lead", image: "/domain_pics/dev/lead/Akshay.png" },
+      { role: "Vinod", title: "Lead", image: "/domain_pics/dev/lead/Vinod.png" },
     ],
   },
   {
     id: "web3",
-    name: "Web3 & Blockchain",
+    name: "Web3",
     tagline: "Decentralize the possible.",
     description:
       "Exploring the frontier of decentralized finance, smart contracts, ZK-proofs, and Web3 infrastructure. We write Ethereum Solidity contracts, build Solana dApps, and host Web3 security workshops.",
@@ -36,15 +37,15 @@ export const DOMAINS: Domain[] = [
     projects: ["Campus NFT Badge Gateway", "Decentralized Voting DApp", "Web3 Guild DAO"],
     sfx: "WHAM!",
     people: [
-      { role: "Head 01", title: "Head" },
-      { role: "Head 02", title: "Head" },
-      { role: "Lead 01", title: "Lead" },
-      { role: "Lead 02", title: "Lead" },
+      { role: "Achyuth", title: "Head", image: "/domain_pics/web3/head/Achyuth .JPEG" },
+      { role: "Franklin", title: "Head", image: "/domain_pics/web3/head/Franklin.png" },
+      { role: "Hariprriya", title: "Lead", image: "/domain_pics/web3/lead/Hariprriya.png" },
+      { role: "Kriuthik Pranav", title: "Lead", image: "/domain_pics/web3/lead/Kriuthik Pranav.png" },
     ],
   },
   {
     id: "content",
-    name: "Content & Tech Writing",
+    name: "Content",
     tagline: "Tell the story.",
     description:
       "Crafting compelling technical narratives, developer documentation, video scripts, and tech blogs. We translate complex engineering concepts into accessible, engaging media for thousands of readers.",
@@ -52,15 +53,15 @@ export const DOMAINS: Domain[] = [
     projects: ["CodeKrafters Guild Blog", "Developer Onboarding Guides", "Hackathon Recaps"],
     sfx: "THWIP!",
     people: [
-      { role: "Head 01", title: "Head" },
-      { role: "Head 02", title: "Head" },
-      { role: "Lead 01", title: "Lead" },
-      { role: "Lead 02", title: "Lead" },
+      { role: "Noorul Hatim", title: "Head", image: "/domain_pics/content/head/Noorul hatim.HEIC" },
+      { role: "Silvi", title: "Head", image: "/domain_pics/content/head/silvi.png" },
+      { role: "Sana", title: "Lead", image: "/domain_pics/content/lead/Sana.png" },
+      { role: "Vasanti", title: "Lead", image: "/domain_pics/content/lead/Vasanti .jpg" },
     ],
   },
   {
     id: "creative",
-    name: "Creative & UI/UX Design",
+    name: "Creative",
     tagline: "Make ideas visible.",
     description:
       "Architects of visual identity, retro pixel art, glassmorphic interfaces, and motion design. We design the look, feel, and interactive magic across all club platforms.",
@@ -68,15 +69,13 @@ export const DOMAINS: Domain[] = [
     projects: ["Launchpad Retro Theme System", "Club Mascot & Emblem Suite", "Design System Tokens"],
     sfx: "WHAM!",
     people: [
-      { role: "Head 01", title: "Head" },
-      { role: "Head 02", title: "Head" },
-      { role: "Lead 01", title: "Lead" },
-      { role: "Lead 02", title: "Lead" },
+      { role: "Kruthika", title: "Lead", image: "/domain_pics/creative/lead/kruthika.jpeg" },
+      { role: "Neeraja", title: "Lead", image: "/domain_pics/creative/lead/neeraja.jpeg" },
     ],
   },
   {
     id: "cp",
-    name: "Competitive Programming",
+    name: "CP",
     tagline: "Think. Code. Conquer.",
     description:
       "Mastering algorithmic problem solving, graph theory, dynamic programming, and speed coding contests. We train members for Codeforces, LeetCode, ICPC, and global coding battles.",
@@ -84,15 +83,15 @@ export const DOMAINS: Domain[] = [
     projects: ["Weekly CP Ladder", "Algorithm Visualizer", "Campus Contest Platform"],
     sfx: "THWIP!",
     people: [
-      { role: "Head 01", title: "Head" },
-      { role: "Head 02", title: "Head" },
-      { role: "Lead 01", title: "Lead" },
-      { role: "Lead 02", title: "Lead" },
+      { role: "Jahanvi", title: "Head", image: "/domain_pics/cp/head/Jahanvi.png" },
+      { role: "Mrudu", title: "Head", image: "/domain_pics/cp/head/Mrudu.png" },
+      { role: "Eshwar", title: "Lead", image: "/domain_pics/cp/lead/Eshwar.png" },
+      { role: "Sundar", title: "Lead", image: "/domain_pics/cp/lead/Sundar.png" },
     ],
   },
   {
     id: "pr",
-    name: "Public Relations & Outreach",
+    name: "PR",
     tagline: "Make the world notice.",
     description:
       "Building industry partnerships, securing event sponsorships, managing social channels, and connecting CodeKrafters with tech leaders, alumni, and campus organizations.",
@@ -100,26 +99,26 @@ export const DOMAINS: Domain[] = [
     projects: ["Hackathon Sponsor Deck", "Keynote Speaker Series", "Social Media Campaigns"],
     sfx: "WHAM!",
     people: [
-      { role: "Head 01", title: "Head" },
-      { role: "Head 02", title: "Head" },
-      { role: "Lead 01", title: "Lead" },
-      { role: "Lead 02", title: "Lead" },
+      { role: "Siddhart", title: "Head", image: "/domain_pics/pr/head/Siddhart.png" },
+      { role: "Ankita", title: "Lead", image: "/domain_pics/pr/lead/Ankita.png" },
+      { role: "Ram", title: "Lead", image: "/domain_pics/pr/lead/Ram.png" },
+      { role: "Tavishi", title: "Lead", image: "/domain_pics/pr/lead/Tavishi.png" },
     ],
   },
   {
-    id: "management",
-    name: "Management & Operations",
-    tagline: "Make it happen.",
+    id: "cs",
+    name: "Cyber Security",
+    tagline: "Secure the grid.",
     description:
-      "The operational engine ensuring seamless execution of hackathons, bootcamps, sprint check-ins, and logistics. We keep projects on schedule and build a thriving community environment.",
-    skills: ["Agile & Scrum Sprints", "Event Logistics", "Budget & Resource Planning", "Team Operations", "Mentorship Coordination"],
-    projects: ["Semester Roadmap Tracker", "Bootcamp Operations Hub", "Launch Day Logistics"],
+      "Defending systems, analyzing vulnerabilities, and learning the art of ethical hacking. We participate in CTFs and build secure web architectures.",
+    skills: ["Ethical Hacking", "Cryptography", "Network Security", "Web Exploitation", "Reverse Engineering"],
+    projects: ["Campus CTF Hosting", "Vulnerability Scanner", "Security Awareness Campaign"],
     sfx: "THWIP!",
     people: [
-      { role: "Head 01", title: "Head" },
-      { role: "Head 02", title: "Head" },
-      { role: "Lead 01", title: "Lead" },
-      { role: "Lead 02", title: "Lead" },
+      { role: "Adithya Kridhna", title: "Head", image: "/domain_pics/cs/head/adithya kridhna.jpeg" },
+      { role: "Yogeswaran", title: "Head", image: "/domain_pics/cs/head/Yogeswaran.png" },
+      { role: "Meyyamai", title: "Lead", image: "/domain_pics/cs/lead/MEYYAMAI.png" },
+      { role: "Tejeshwar", title: "Lead", image: "/domain_pics/cs/lead/Tejeshwar.png" },
     ],
   },
 ];

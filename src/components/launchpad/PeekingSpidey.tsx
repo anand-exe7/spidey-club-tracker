@@ -84,7 +84,7 @@ export function PeekingSpidey() {
       <img 
         src={getImageSource()} 
         alt="Peeking Spidey" 
-        className="w-10 h-auto sm:w-28 drop-shadow-2xl cursor-pointer pointer-events-auto hover:scale-110 transition-transform"
+        className="w-16 h-auto sm:w-28 drop-shadow-2xl cursor-pointer pointer-events-auto hover:scale-110 transition-transform"
         style={side === "bottom" ? { filter: "hue-rotate(55deg) saturate(1.5)" } : undefined}
         draggable={false}
         onClick={() => {
@@ -92,8 +92,8 @@ export function PeekingSpidey() {
             setIsVisible(false);
         }}
       />
-      <div className="border-2 sm:border-4 border-frame-dark bg-card p-1.5 sm:p-4 shadow-xl max-w-[90px] sm:max-w-[240px] pointer-events-auto">
-        <p className="text-[6px] sm:text-[11px] font-bold text-foreground leading-tight sm:leading-5">{quote}</p>
+      <div className="border-2 sm:border-4 border-frame-dark bg-card p-2 sm:p-4 shadow-xl max-w-[140px] sm:max-w-[240px] pointer-events-auto">
+        <p className="text-[9px] sm:text-[11px] font-bold text-foreground leading-tight sm:leading-5">{quote}</p>
       </div>
     </div>
   );
