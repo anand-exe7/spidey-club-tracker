@@ -11,18 +11,19 @@ import { SpideyTracker } from "@/components/launchpad/SpideyTracker";
 import { playThwipSound } from "@/lib/spideyAudio";
 import { toast } from "sonner";
 import { QRCodeSVG } from "qrcode.react";
-import { DOMAINS, ABOUT_PARAS, STATS, VALUES, TIMELINE, LEADERSHIP } from "@/components/launchpad/data";
+import {
+  DOMAINS,
+  ABOUT_PARAS,
+  STATS,
+  VALUES,
+  TIMELINE,
+  LEADERSHIP,
+} from "@/components/launchpad/data";
 
 // LinkedIn Logo Component
 function LinkedInLogo() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="40"
-      height="40"
-      fill="currentColor"
-      className="text-foreground"
-    >
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" className="text-foreground">
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
     </svg>
   );
@@ -31,13 +32,7 @@ function LinkedInLogo() {
 // Instagram Logo Component
 function InstagramLogo() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="40"
-      height="40"
-      fill="currentColor"
-      className="text-pink-600"
-    >
+    <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" className="text-pink-600">
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z" />
     </svg>
   );
@@ -229,7 +224,10 @@ function Index() {
             {/* Club Core Values */}
             <div className="mt-8 sm:mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 max-w-5xl mx-auto">
               {VALUES.map((v) => (
-                <div key={v.title} className="border-4 border-frame-dark bg-card p-3 sm:p-5 text-center">
+                <div
+                  key={v.title}
+                  className="border-4 border-frame-dark bg-card p-3 sm:p-5 text-center"
+                >
                   <span className="text-base text-primary">{v.icon}</span>
                   <p className="mt-3 text-[10px] font-bold leading-5 text-foreground">{v.title}</p>
                   <p className="mt-2 text-[8px] leading-5 text-muted-foreground">{v.text}</p>
@@ -239,7 +237,10 @@ function Index() {
           </section>
 
           {/* 02 // CLUB DOMAINS (Single Domain View Carousel) */}
-          <section id="club-domains" className="border-b-4 border-frame-dark px-6 py-8 sm:px-12 sm:py-16">
+          <section
+            id="club-domains"
+            className="border-b-4 border-frame-dark px-6 py-8 sm:px-12 sm:py-16"
+          >
             <SectionLabel>02 // CLUB DOMAINS</SectionLabel>
             <h2 className="mt-4 text-center text-lg text-foreground sm:text-3xl">
               Explore All 7 Domains
@@ -334,29 +335,33 @@ function Index() {
                 <div className="w-full border-4 border-frame bg-card p-6 sm:p-10 shadow-lg">
                   {/* Domain Header */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-4 border-frame-dark pb-6 mb-8">
-                    <div className="flex items-center gap-3">
-                      <span className="border-4 border-frame-dark bg-primary px-3 py-1.5 text-[8px] sm:text-[9px] text-primary-foreground font-bold">
-                        NODE {String(currentDomainIndex + 1).padStart(2, "0")}
-                      </span>
-                      <span className="border-4 border-frame-dark bg-web-yellow px-3 py-1.5 text-[8px] sm:text-[9px] text-background font-bold">
-                        {DOMAINS[currentDomainIndex]?.sfx}
-                      </span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-xl sm:text-2xl md:text-3xl text-foreground font-bold break-words">
+                    <span className="self-center sm:self-start border-4 border-frame-dark bg-primary px-3 py-1.5 text-[8px] sm:text-[9px] text-primary-foreground font-bold">
+                      NODE {String(currentDomainIndex + 1).padStart(2, "0")}
+                    </span>
+
+                    <div className="flex-1 min-w-0 text-center">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl text-foreground font-bold break-words uppercase">
                         {DOMAINS[currentDomainIndex]?.name}
                       </h3>
                       <p className="mt-2 text-[9px] sm:text-[10px] text-muted-foreground italic truncate">
                         {DOMAINS[currentDomainIndex]?.tagline}
                       </p>
                     </div>
+
+                    <span className="self-center sm:self-auto border-4 border-frame-dark bg-web-yellow px-3 py-1.5 text-[8px] sm:text-[9px] text-background font-bold">
+                      {DOMAINS[currentDomainIndex]?.sfx}
+                    </span>
                   </div>
 
                   {/* Team — vertical portrait cards, heads then leads */}
                   <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3 sm:gap-5">
                     {[
-                      ...((DOMAINS[currentDomainIndex]?.people ?? []).filter(p => p.title.toLowerCase() === 'head')),
-                      ...((DOMAINS[currentDomainIndex]?.people ?? []).filter(p => p.title.toLowerCase() === 'lead')),
+                      ...(DOMAINS[currentDomainIndex]?.people ?? []).filter(
+                        (p) => p.title.toLowerCase() === "head",
+                      ),
+                      ...(DOMAINS[currentDomainIndex]?.people ?? []).filter(
+                        (p) => p.title.toLowerCase() === "lead",
+                      ),
                     ].map((p) => (
                       <div
                         key={p.role}
@@ -372,7 +377,7 @@ function Index() {
                             src={p.image}
                             alt={p.role}
                             className="w-full h-full object-cover"
-                            style={{ objectPosition: p.objectPosition ?? 'top' }}
+                            style={{ objectPosition: p.objectPosition ?? "top" }}
                           />
                         </div>
 
@@ -396,13 +401,25 @@ function Index() {
                             onClick={() => playThwipSound()}
                             aria-label={`${p.role} LinkedIn`}
                           >
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" className="text-foreground">
+                            <svg
+                              viewBox="0 0 24 24"
+                              width="14"
+                              height="14"
+                              fill="currentColor"
+                              className="text-foreground"
+                            >
                               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
                             </svg>
                           </a>
                         ) : (
                           <div className="mt-auto w-8 h-8 rounded-full bg-background border-2 border-frame-dark opacity-20 flex items-center justify-center">
-                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" className="text-foreground">
+                            <svg
+                              viewBox="0 0 24 24"
+                              width="14"
+                              height="14"
+                              fill="currentColor"
+                              className="text-foreground"
+                            >
                               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
                             </svg>
                           </div>
@@ -446,10 +463,11 @@ function Index() {
                         setCurrentDomainIndex(index);
                         playThwipSound();
                       }}
-                      className={`w-3 h-3 sm:w-4 sm:h-4 border-2 transition-all ${index === currentDomainIndex
-                        ? 'bg-primary border-primary'
-                        : 'border-frame-dark bg-card hover:bg-frame-dark'
-                        }`}
+                      className={`w-3 h-3 sm:w-4 sm:h-4 border-2 transition-all ${
+                        index === currentDomainIndex
+                          ? "bg-primary border-primary"
+                          : "border-frame-dark bg-card hover:bg-frame-dark"
+                      }`}
                       title={DOMAINS[index]?.name}
                     />
                   ))}
@@ -464,10 +482,11 @@ function Index() {
                         setCurrentDomainIndex(index);
                         playThwipSound();
                       }}
-                      className={`text-[8px] sm:text-[9px] px-3 py-2 border-2 uppercase font-bold tracking-widest transition-all ${index === currentDomainIndex
-                        ? 'bg-primary border-primary text-primary-foreground'
-                        : 'border-frame-dark text-foreground hover:bg-frame-dark'
-                        }`}
+                      className={`text-[8px] sm:text-[9px] px-3 py-2 border-2 uppercase font-bold tracking-widest transition-all ${
+                        index === currentDomainIndex
+                          ? "bg-primary border-primary text-primary-foreground"
+                          : "border-frame-dark text-foreground hover:bg-frame-dark"
+                      }`}
                     >
                       {domain.name}
                     </button>
@@ -535,12 +554,18 @@ function Index() {
           </section>
 
           {/* 06 // SPIDEY MASK & SUIT HUD LAB */}
-          <section id="spidey-hud" className="px-6 py-8 sm:px-12 sm:py-12 border-b-4 border-frame-dark">
+          <section
+            id="spidey-hud"
+            className="px-6 py-8 sm:px-12 sm:py-12 border-b-4 border-frame-dark"
+          >
             <SpideyMaskShowcase />
           </section>
 
           {/* 07 // SPIDEY TRACKER DASHBOARD */}
-          <section id="spidey-tracker" className="px-6 py-8 sm:px-12 sm:py-12 border-b-4 border-frame-dark overflow-hidden w-full max-w-[100vw]">
+          <section
+            id="spidey-tracker"
+            className="px-6 py-8 sm:px-12 sm:py-12 border-b-4 border-frame-dark overflow-hidden w-full max-w-[100vw]"
+          >
             <SpideyTracker />
           </section>
 
@@ -551,7 +576,12 @@ function Index() {
               SCAN TO ACCESS ALL CLUB LINKS
             </p>
 
-            <div className="border-4 border-frame-dark bg-transparent p-4 shadow-lg transition-transform hover:scale-105 cursor-pointer text-primary" onClick={() => { window.location.href = "/links" }}>
+            <div
+              className="border-4 border-frame-dark bg-transparent p-4 shadow-lg transition-transform hover:scale-105 cursor-pointer text-primary"
+              onClick={() => {
+                window.location.href = "/links";
+              }}
+            >
               <QRCodeSVG
                 value="https://launchpad-ck.vercel.app/links"
                 size={180}
@@ -570,7 +600,9 @@ function Index() {
 
             {/* Social Media Links Section */}
             <div className="mt-12 w-full max-w-2xl">
-              <p className="text-[9px] tracking-[0.4em] text-accent uppercase font-bold mb-6">FOLLOW OUR SOCIAL WEB</p>
+              <p className="text-[9px] tracking-[0.4em] text-accent uppercase font-bold mb-6">
+                FOLLOW OUR SOCIAL WEB
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                 <a
                   href="https://codekrafters.tech/"
@@ -580,7 +612,9 @@ function Index() {
                   title="CodeKrafters Website"
                 >
                   <div className="text-3xl sm:text-4xl mb-3">🌐</div>
-                  <p className="text-[9px] sm:text-[10px] font-bold text-foreground uppercase">Website</p>
+                  <p className="text-[9px] sm:text-[10px] font-bold text-foreground uppercase">
+                    Website
+                  </p>
                   <p className="text-[7px] text-muted-foreground mt-1">Visit Our Site</p>
                 </a>
                 <a
@@ -593,7 +627,9 @@ function Index() {
                   <div className="mb-3 flex justify-center">
                     <InstagramLogo />
                   </div>
-                  <p className="text-[9px] sm:text-[10px] font-bold text-foreground uppercase">Instagram</p>
+                  <p className="text-[9px] sm:text-[10px] font-bold text-foreground uppercase">
+                    Instagram
+                  </p>
                   <p className="text-[7px] text-muted-foreground mt-1">Follow Us</p>
                 </a>
                 <a
@@ -606,7 +642,9 @@ function Index() {
                   <div className="mb-3 flex justify-center">
                     <LinkedInLogo />
                   </div>
-                  <p className="text-[9px] sm:text-[10px] font-bold text-foreground uppercase">LinkedIn</p>
+                  <p className="text-[9px] sm:text-[10px] font-bold text-foreground uppercase">
+                    LinkedIn
+                  </p>
                   <p className="text-[7px] text-muted-foreground mt-1">Connect</p>
                 </a>
               </div>
@@ -623,15 +661,15 @@ function Index() {
 
           {/* Modal Overlay for Domain Leads/Heads */}
           {selectedPerson && (
-            <div 
+            <div
               className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm p-4"
               onClick={() => setSelectedPerson(null)}
             >
-              <div 
+              <div
                 className="relative border-4 border-frame-dark bg-card p-6 sm:p-10 max-w-sm w-full flex flex-col items-center shadow-2xl transition-all animate-in zoom-in-95 duration-200"
                 onClick={(e) => e.stopPropagation()}
               >
-                <button 
+                <button
                   className="absolute top-2 right-4 text-foreground hover:text-primary transition-colors text-3xl font-bold"
                   onClick={() => setSelectedPerson(null)}
                 >
@@ -642,7 +680,7 @@ function Index() {
                     src={selectedPerson.image}
                     alt={selectedPerson.role}
                     className="w-full h-full object-cover"
-                    style={{ objectPosition: selectedPerson.objectPosition ?? 'top' }}
+                    style={{ objectPosition: selectedPerson.objectPosition ?? "top" }}
                   />
                 </div>
                 <h3 className="text-xl sm:text-3xl font-bold text-foreground text-center mb-2 text-glow uppercase">
