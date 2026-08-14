@@ -103,21 +103,25 @@ export function SpiderScroll() {
     return () => cancelAnimationFrame(animId);
   }, [mousePos]);
 
-  // Click Spidey to swap suit
-  const handleSpideyClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setSuitIndex((prev) => (prev + 1) % SUITS.length);
-    playThwipSound();
-    setPose("thwip");
-    setExpression("wide");
-    setQuip(`SUIT SWAPPED • CODEKRAFTERS 🕷️`);
+  // Double click anywhere to swap suit
+  useEffect(() => {
+    const handleDblClick = () => {
+      setSuitIndex((prev) => (prev + 1) % SUITS.length);
+      playThwipSound();
+      setPose("thwip");
+      setExpression("wide");
+      setQuip(`SUIT SWAPPED • CODEKRAFTERS 🕷️`);
 
-    window.setTimeout(() => {
-      setPose("hanging");
-      setExpression("normal");
-      setQuip(null);
-    }, 900);
-  };
+      window.setTimeout(() => {
+        setPose("hanging");
+        setExpression("normal");
+        setQuip(null);
+      }, 900);
+    };
+
+    window.addEventListener("dblclick", handleDblClick);
+    return () => window.removeEventListener("dblclick", handleDblClick);
+  }, []);
 
   const activeSuit = SUITS[suitIndex]!;
 
@@ -154,7 +158,7 @@ export function SpiderScroll() {
 
       {/* Spider-Man Character */}
       <div
-        className="pointer-events-auto absolute transition-transform duration-100 ease-out"
+        className="pointer-events-none absolute transition-transform duration-100 ease-out"
         style={{
           left: `${spideyPos.x - 34}px`,
           top: `${spideyPos.y - 34}px`,
@@ -163,13 +167,13 @@ export function SpiderScroll() {
         }}
       >
         {/* Spidey Character */}
-        <div className="relative group cursor-pointer" onClick={handleSpideyClick}>
+        <div className="relative">
           <PixelSpider
             size={68}
             suit={activeSuit}
             pose={pose}
             expression={expression}
-            interactive
+            interactive={false}
           />
 
           {/* CK Logo held by Spidey */}
@@ -183,11 +187,6 @@ export function SpiderScroll() {
               top: "22px",
             }}
           />
-
-          {/* Tooltip */}
-          <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap rounded border border-frame-dark bg-card px-2 py-0.5 text-[7px] text-primary uppercase">
-            CLICK TO SWAP CODEX SUIT
-          </span>
         </div>
 
         {/* Speech Quip */}
