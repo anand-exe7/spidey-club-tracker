@@ -235,49 +235,144 @@ function Index() {
               EVERY NODE OF THE CODEKRAFTERS WEB
             </p>
 
-            <div className="mt-8 flex flex-row gap-6 overflow-x-auto snap-x snap-mandatory pb-4 sm:flex-col sm:gap-8 sm:overflow-visible sm:snap-none sm:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] max-w-4xl mx-auto">
+            <div className="mt-8 flex flex-col gap-6 sm:gap-10 max-w-7xl mx-auto w-full px-2 sm:px-6">
+              {/* NODE 00: EXECUTIVE BOARD */}
+              <div className="w-full border-4 border-web-yellow bg-card p-3 sm:p-8 transition-transform hover:-translate-y-1 shadow-md">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-4 border-frame-dark pb-4">
+                  <span className="self-center sm:self-start border-4 border-frame-dark bg-web-yellow px-3 py-1.5 text-[9px] text-background font-bold">
+                    NODE 00
+                  </span>
+                  <div className="flex-1 text-center">
+                    <h3 className="text-xl sm:text-2xl text-web-yellow font-bold leading-tight break-words">
+                      EXECUTIVE BOARD
+                    </h3>
+                    <p className="text-[10px] sm:text-xs font-bold text-accent uppercase tracking-widest break-words mt-1">
+                      Core Leadership
+                    </p>
+                  </div>
+                  {/* Invisible spacer on desktop to balance the NODE badge for perfect centering */}
+                  <span className="hidden sm:block opacity-0 px-3 py-1.5 text-[9px]">NODE 00</span>
+                </div>
+
+                <div className="mt-8 sm:mt-12">
+                  <p className="text-[10px] font-bold tracking-widest text-accent uppercase mb-4 text-center">
+                    PRESIDENT & VICE PRESIDENT
+                  </p>
+                  <div className="grid gap-3 grid-cols-2 sm:grid-cols-4">
+                    {/* President Card */}
+                    <div className="sm:col-start-2 border-4 border-frame-dark bg-screen transition-transform hover:scale-105 flex flex-col items-stretch h-full shadow-sm overflow-hidden">
+                      <div className="shrink-0 w-full border-b-4 border-frame-dark bg-primary flex">
+                        <img 
+                          src="/domain_pics/pres/Sanjay.jpeg"
+                          alt="Sanjay"
+                          className="w-full h-full object-cover aspect-square"
+                        />
+                      </div>
+                      <div className="flex-1 p-2 sm:p-4 flex flex-col justify-center text-center">
+                        <p className="text-[11px] sm:text-sm font-bold text-foreground break-words">Sanjay</p>
+                        <p className="mt-1 text-[9px] sm:text-[10px] font-bold text-web-yellow uppercase tracking-widest">President</p>
+                      </div>
+                    </div>
+                    
+                    {/* Vice President Card */}
+                    <div className="border-4 border-frame-dark bg-screen transition-transform hover:scale-105 flex flex-col items-stretch h-full shadow-sm overflow-hidden">
+                      <div className="shrink-0 w-full border-b-4 border-frame-dark bg-primary flex">
+                        <img 
+                          src="/domain_pics/vp/Satya VP.png"
+                          alt="Satya"
+                          className="w-full h-full object-cover aspect-square"
+                        />
+                      </div>
+                      <div className="flex-1 p-2 sm:p-4 flex flex-col justify-center text-center">
+                        <p className="text-[11px] sm:text-sm font-bold text-foreground break-words">Satya</p>
+                        <p className="mt-1 text-[9px] sm:text-[10px] font-bold text-web-yellow uppercase tracking-widest">Vice President</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {DOMAINS.map((domain, index) => (
                 <div
                   key={domain.id}
-                  className="w-full shrink-0 snap-center sm:w-auto sm:shrink sm:snap-align-none border-4 border-frame bg-card p-4 sm:p-8 transition-transform hover:-translate-y-1 shadow-md"
+                  className="w-full border-4 border-frame bg-card p-3 sm:p-8 transition-transform hover:-translate-y-1 shadow-md"
                 >
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b-4 border-frame-dark pb-3 sm:gap-4 sm:pb-4">
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <span className="border-4 border-frame-dark bg-primary px-2 py-1 text-[8px] sm:px-3 sm:py-1.5 sm:text-[9px] text-primary-foreground font-bold">
-                        NODE {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div>
-                        <h3 className="text-sm text-foreground sm:text-2xl font-bold leading-tight">
-                          {domain.name}
-                        </h3>
-                        <p className="text-[7px] sm:text-[9px] text-muted-foreground">{domain.tagline}</p>
-                      </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-4 border-frame-dark pb-4">
+                    <span className="self-center sm:self-start border-4 border-frame-dark bg-primary px-3 py-1.5 text-[9px] text-primary-foreground font-bold">
+                      NODE {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <div className="flex-1 text-center">
+                      <h3 className="text-xl sm:text-2xl text-foreground font-bold leading-tight break-words">
+                        {domain.name}
+                      </h3>
+                      <p className="mt-1 text-[8px] sm:text-[9px] text-muted-foreground break-words">{domain.tagline}</p>
                     </div>
 
-                    <span className="border-4 border-frame-dark bg-web-yellow px-2 py-1 text-[7px] sm:px-3 sm:py-1.5 sm:text-[9px] text-background font-bold">
+                    <span className="self-center sm:self-auto border-4 border-frame-dark bg-web-yellow px-3 py-1.5 text-[9px] text-background font-bold">
                       {domain.sfx}
                     </span>
                   </div>
 
                   {/* Domain Crew List */}
-                  <div className="mt-4 sm:mt-6">
-                    <p className="text-[7px] sm:text-[8px] tracking-widest text-accent uppercase mb-2 sm:mb-3">
-                      DOMAIN CREW & LEADS
-                    </p>
-                    <div className="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-4">
-                      {domain.people.map((p) => (
-                        <div
-                          key={p.role}
-                          className="border-2 sm:border-4 border-frame-dark bg-screen p-2 sm:p-4 text-center transition-transform hover:scale-105"
-                        >
-                          <div className="mx-auto flex h-6 w-6 sm:h-10 sm:w-10 items-center justify-center border-2 border-frame bg-primary text-[7px] sm:text-[9px] text-primary-foreground font-bold">
-                            CK
-                          </div>
-                          <p className="mt-2 text-[8px] sm:text-[9px] font-bold text-foreground">{p.role}</p>
-                          <p className="text-[7px] sm:text-[8px] text-accent">{p.title}</p>
+                  <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-8 sm:gap-3">
+                    {/* HEADS BLOCK */}
+                    {domain.people.filter(p => p.title.toLowerCase() === 'head').length > 0 && (
+                      <div className="w-full sm:w-1/2">
+                        <p className="text-[10px] font-bold tracking-widest text-accent uppercase mb-4 text-center sm:text-left">
+                          HEADS
+                        </p>
+                        <div className="grid gap-3 grid-cols-2">
+                          {domain.people.filter(p => p.title.toLowerCase() === 'head').map((p) => (
+                            <div
+                              key={p.role}
+                              className="border-4 border-frame-dark bg-screen transition-transform hover:scale-105 flex flex-col items-stretch h-full shadow-sm overflow-hidden"
+                            >
+                              <div className="shrink-0 w-full border-b-4 border-frame-dark bg-primary flex">
+                                <img 
+                                  src={p.image}
+                                  alt={p.role}
+                                  className="w-full h-full object-cover aspect-square"
+                                />
+                              </div>
+                              <div className="flex-1 p-2 sm:p-4 flex flex-col justify-center text-center">
+                                <p className="text-[11px] sm:text-sm font-bold text-foreground break-words">{p.role}</p>
+                                <p className="mt-1 text-[9px] sm:text-[10px] font-bold text-accent uppercase tracking-widest">{p.title}</p>
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    )}
+
+                    {/* LEADS BLOCK */}
+                    {domain.people.filter(p => p.title.toLowerCase() === 'lead').length > 0 && (
+                      <div className="w-full sm:w-1/2">
+                        <p className="text-[10px] font-bold tracking-widest text-accent uppercase mb-4 text-center sm:text-left">
+                          LEADS
+                        </p>
+                        <div className="grid gap-3 grid-cols-2">
+                          {domain.people.filter(p => p.title.toLowerCase() === 'lead').map((p) => (
+                            <div
+                              key={p.role}
+                              className="border-4 border-frame-dark bg-screen transition-transform hover:scale-105 flex flex-col items-stretch h-full shadow-sm overflow-hidden"
+                            >
+                              <div className="shrink-0 w-full border-b-4 border-frame-dark bg-primary flex">
+                                <img 
+                                  src={p.image}
+                                  alt={p.role}
+                                  className="w-full h-full object-cover aspect-square"
+                                />
+                              </div>
+                              <div className="flex-1 p-2 sm:p-4 flex flex-col justify-center text-center">
+                                <p className="text-[11px] sm:text-sm font-bold text-foreground break-words">{p.role}</p>
+                                <p className="mt-1 text-[9px] sm:text-[10px] font-bold text-accent uppercase tracking-widest">{p.title}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -378,7 +473,7 @@ function Index() {
             {/* Social Media Links Section */}
             <div className="mt-12 w-full max-w-2xl">
               <p className="text-[9px] tracking-[0.4em] text-accent uppercase font-bold mb-6">FOLLOW OUR SOCIAL WEB</p>
-              <div className="grid grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                 <a
                   href="https://codekrafters.tech/"
                   target="_blank"

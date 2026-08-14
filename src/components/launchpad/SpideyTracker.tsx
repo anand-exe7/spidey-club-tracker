@@ -24,17 +24,8 @@ const INITIAL_LOGS: LogEntry[] = [
  */
 export function SpideyTracker() {
   const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
-  const [radarAngle, setRadarAngle] = useState(0);
   const [thwipCount, setThwipCount] = useState(1420);
   const [threatLevel, setThreatLevel] = useState<"LOW" | "MODERATE" | "HIGH">("LOW");
-
-  // Rotate radar sweeper
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setRadarAngle((a) => (a + 6) % 360);
-    }, 50);
-    return () => window.clearInterval(id);
-  }, []);
 
   // Periodically add live simulated club activity log
   useEffect(() => {
@@ -82,7 +73,7 @@ export function SpideyTracker() {
       </div>
 
       {/* Top Left Navigation Buttons */}
-      <div className="absolute top-12 left-0 sm:left-4 z-10 flex flex-col gap-4 pointer-events-none sm:pointer-events-auto scale-90 sm:scale-100 origin-top-left">
+      <div className="absolute top-12 left-0 sm:left-4 z-10 hidden sm:flex flex-col gap-4 pointer-events-none sm:pointer-events-auto scale-90 sm:scale-100 origin-top-left">
         <div className="flex items-center group cursor-pointer pointer-events-auto">
           <div className="border-y-4 border-r-4 sm:border-4 border-frame-dark bg-card p-2 sm:p-3 hover:-translate-y-0.5 transition-transform">
             <PixelSpider size={20} suit="classic" pose="hanging" expression="squint" />
@@ -112,7 +103,7 @@ export function SpideyTracker() {
       </div>
 
       {/* Bottom Right: Radar Scanner */}
-      <div className="absolute bottom-16 sm:bottom-10 right-4 sm:right-10 z-10 flex flex-col items-end pointer-events-none scale-75 sm:scale-100 origin-bottom-right">
+      <div className="absolute bottom-16 sm:bottom-10 right-4 sm:right-10 z-10 hidden sm:flex flex-col items-end pointer-events-none scale-75 sm:scale-100 origin-bottom-right">
         {/* Interactive Radar Circle */}
         <div className="relative flex h-32 w-32 sm:h-48 sm:w-48 items-center justify-center rounded-full border-4 border-primary/40 bg-screen shadow-inner backdrop-blur-md">
           {/* Concentric rings */}
@@ -122,8 +113,7 @@ export function SpideyTracker() {
 
           {/* Radar Sweeper Line */}
           <div
-            className="absolute top-1/2 left-1/2 h-[64px] sm:h-[96px] w-[2px] origin-top bg-gradient-to-b from-primary to-transparent"
-            style={{ transform: `rotate(${radarAngle}deg)` }}
+            className="absolute top-1/2 left-1/2 h-[64px] sm:h-[96px] w-[2px] origin-top bg-gradient-to-b from-primary to-transparent animate-[spin_3s_linear_infinite]"
           />
 
           {/* Radar Center Spidey Icon */}
@@ -153,7 +143,7 @@ export function SpideyTracker() {
         {/* Live Terminal & Stats */}
         <div className="w-full max-w-lg space-y-4 sm:space-y-6 pointer-events-auto">
           {/* Stat Cards */}
-          <div className="grid grid-cols-4 gap-2 sm:gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
             <div className="border-4 border-frame-dark bg-card p-2 sm:p-3 text-center">
               <p className="text-xs sm:text-lg text-primary text-glow font-bold">{thwipCount}</p>
               <p className="mt-1 text-[5px] sm:text-[7px] text-muted-foreground uppercase">THWIPS</p>
