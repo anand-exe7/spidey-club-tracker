@@ -76,6 +76,7 @@ function SectionLabel({ children }: { children: string }) {
 function Index() {
   const [stage, setStage] = useState<"boot" | "globe" | "landing">("boot");
   const [currentDomainIndex, setCurrentDomainIndex] = useState(0);
+  const [selectedPerson, setSelectedPerson] = useState<any>(null);
 
   // Auto-advance domains carousel
   useEffect(() => {
@@ -359,10 +360,14 @@ function Index() {
                     ].map((p) => (
                       <div
                         key={p.role}
-                        className="mx-auto flex flex-col items-center justify-between bg-card border-4 border-frame-dark rounded-2xl px-2 py-4 sm:px-5 sm:py-6 w-full max-w-[140px] sm:max-w-[170px] flex-shrink-0 transition-transform hover:-translate-y-1 shadow-md"
+                        onClick={() => {
+                          setSelectedPerson({ ...p, domain: DOMAINS[currentDomainIndex]?.name });
+                          playThwipSound();
+                        }}
+                        className="mx-auto flex flex-col items-center justify-between bg-card border-4 border-frame-dark rounded-2xl px-2 py-4 sm:px-5 sm:py-6 w-full max-w-[140px] sm:max-w-[170px] flex-shrink-0 transition-transform hover:-translate-y-1 shadow-md cursor-pointer hover:border-primary group"
                       >
                         {/* Circular photo */}
-                        <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full border-4 border-frame-dark overflow-hidden mb-3 sm:mb-4 bg-screen flex-shrink-0">
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full border-4 border-frame-dark group-hover:border-primary transition-colors overflow-hidden mb-3 sm:mb-4 bg-screen flex-shrink-0">
                           <img
                             src={p.image}
                             alt={p.role}
@@ -615,6 +620,54 @@ function Index() {
               CODEKRAFTERS CLUB • LAUNCHPAD 2026 • LAUNCHPAD-CK.VERCEL.APP
             </span>
           </div>
+
+          {/* Modal Overlay for Domain Leads/Heads */}
+          {selectedPerson && (
+            <div 
+              className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm p-4"
+              onClick={() => setSelectedPerson(null)}
+            >
+              <div 
+                className="relative border-4 border-frame-dark bg-card p-6 sm:p-10 max-w-sm w-full flex flex-col items-center shadow-2xl transition-all animate-in zoom-in-95 duration-200"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button 
+                  className="absolute top-2 right-4 text-foreground hover:text-primary transition-colors text-3xl font-bold"
+                  onClick={() => setSelectedPerson(null)}
+                >
+                  ×
+                </button>
+                <div className="w-32 h-32 sm:w-48 sm:h-48 rounded-full border-4 border-primary overflow-hidden mb-6 bg-screen flex-shrink-0 shadow-lg">
+                  <img
+                    src={selectedPerson.image}
+                    alt={selectedPerson.role}
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: selectedPerson.objectPosition ?? 'top' }}
+                  />
+                </div>
+                <h3 className="text-xl sm:text-3xl font-bold text-foreground text-center mb-2 text-glow uppercase">
+                  {selectedPerson.role}
+                </h3>
+                <div className="inline-block border-2 border-web-yellow bg-web-yellow px-3 py-1 mb-6">
+                  <p className="text-[10px] sm:text-xs font-bold text-background uppercase tracking-widest text-center">
+                    {selectedPerson.domain} {selectedPerson.title}
+                  </p>
+                </div>
+                {selectedPerson.linkedin && (
+                  <a
+                    href={selectedPerson.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-3 border-4 border-frame-dark bg-screen hover:bg-primary hover:text-primary-foreground hover:border-frame-light px-6 py-4 text-[10px] sm:text-xs text-foreground font-bold uppercase tracking-widest transition-all w-full"
+                    onClick={() => playThwipSound()}
+                  >
+                    <LinkedInLogo />
+                    <span>Connect on LinkedIn</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
         </Frame>
       )}
     </>
