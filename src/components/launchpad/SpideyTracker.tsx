@@ -130,7 +130,7 @@ export function SpideyTracker() {
       </div>
 
       {/* Center Layout: Terminal and Stats */}
-      <div className="absolute inset-0 flex flex-col items-center justify-start sm:justify-center p-4 sm:p-6 pt-32 sm:pt-6 z-0 pointer-events-none">
+      <div className="relative z-0 flex flex-col items-center justify-center w-full px-4 pt-24 pb-24 sm:px-6 sm:pt-24 sm:pb-24 pointer-events-none">
         <div className="text-center mb-6 sm:mb-8 pointer-events-auto">
           <h3 className="text-[9px] sm:text-xs font-bold text-web-yellow tracking-widest leading-relaxed max-w-[280px] sm:max-w-sm mx-auto uppercase">
             WELCOME! HERE'S A HANDY GUIDE TO HELP YOU NAVIGATE THE EXPERIENCE.

@@ -103,6 +103,8 @@ function Index() {
               }}
             />
 
+
+
             {/* Hero Logo */}
             <div className="relative mb-6 group cursor-pointer" onClick={() => playThwipSound()}>
               <div className="mx-auto h-12 w-[2px] bg-foreground/60" />
