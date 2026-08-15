@@ -6,7 +6,7 @@ export type Domain = {
   skills: string[];
   projects: string[];
   sfx: string;
-  people: { role: string; title: string; image: string; objectPosition?: string; linkedin?: string }[];
+  people: { role: string; title: string; image: string; objectPosition?: string; linkedin?: string; instagram?: string }[];
 };
 
 export const DOMAINS: Domain[] = [
@@ -21,10 +21,10 @@ export const DOMAINS: Domain[] = [
     sfx: "THWIP!",
     people: [
 
-      { role: "Vinoth", title: "Head", image: "/domain_pics/dev/head/Vinoth.png", linkedin: "https://www.linkedin.com/in/vinoth-anand-gani-304126325/" },
-      { role: "Anand", title: "Head", image: "/domain_pics/dev/head/Anand.jpg", linkedin: "https://www.linkedin.com/in/anandsivarams/" },
-      { role: "Akshay", title: "Lead", image: "/domain_pics/dev/lead/Akshay.png", linkedin: "https://www.linkedin.com/in/akshay-p-9bb587355/" },
-      { role: "Abhishek", title: "Lead", image: "/domain_pics/dev/lead/Abhishek.jpeg", linkedin: "https://www.linkedin.com/in/abhishek-vinod-/" },
+      { role: "Vinoth", title: "Head", image: "/domain_pics/dev/head/Vinoth.png", linkedin: "https://www.linkedin.com/in/vinoth-anand-gani-304126325/", instagram: "https://www.instagram.com/vinayvinod567/" },
+      { role: "Anand", title: "Head", image: "/domain_pics/dev/head/Anand.jpg", linkedin: "https://www.linkedin.com/in/anandsivarams/", instagram: "https://www.instagram.com/ananvdd" },
+      { role: "Akshay", title: "Lead", image: "/domain_pics/dev/lead/Akshay.png", linkedin: "https://www.linkedin.com/in/akshay-p-9bb587355/", instagram: "https://www.instagram.com/___iamakshay__/" },
+      { role: "Abhishek", title: "Lead", image: "/domain_pics/dev/lead/Abhishek.jpeg", linkedin: "https://www.linkedin.com/in/abhishek-vinod-/", instagram: "https://www.instagram.com/_.abhishek_.vinod/" },
     ],
   },
   {
@@ -37,10 +37,10 @@ export const DOMAINS: Domain[] = [
     projects: ["Campus NFT Badge Gateway", "Decentralized Voting DApp", "Web3 Guild DAO"],
     sfx: "WHAM!",
     people: [
-      { role: "Achyuth", title: "Head", image: "/domain_pics/web3/head/Achyuth .JPEG" },
-      { role: "Franklin", title: "Head", image: "/domain_pics/web3/head/Franklin.png" },
-      { role: "Hariprriya", title: "Lead", image: "/domain_pics/web3/lead/Hariprriya.png" },
-      { role: "Kriuthik Pranav", title: "Lead", image: "/domain_pics/web3/lead/Kriuthik Pranav.png" },
+      { role: "Achyuth", title: "Head", image: "/domain_pics/web3/head/Achyuth .JPEG", linkedin: "https://www.linkedin.com/in/achyuth-pv-78653528a?", instagram: "https://www.instagram.com/achyuth_pv?igsh=eW5xd2dyM2F5ejdn&utm_source=qr" },
+      { role: "Franklin", title: "Head", image: "/domain_pics/web3/head/Franklin.png", linkedin: "https://www.linkedin.com/in/franklin-babu-852022327/", instagram: "https://www.instagram.com/frankhyper11?igsh=MXYwZmtlYXdmdmJjNA==" },
+      { role: "Hariprriya", title: "Lead", image: "/domain_pics/web3/lead/Hariprriya.png", linkedin: "https://www.linkedin.com/in/hariprriya-vijayakarthy-ba51a338a", instagram: "https://www.instagram.com/hari_prriya_?igsh=MWp0aW0zbXB4MnJsZg==" },
+      { role: "Kiruthik Pranav", title: "Lead", image: "/domain_pics/web3/lead/Kriuthik Pranav.png", linkedin: "https://www.linkedin.com/in/kiruthik-pranav-j-s", instagram: "https://www.instagram.com/kiruthikpranav_offl/" },
     ],
   },
   {
@@ -53,10 +53,10 @@ export const DOMAINS: Domain[] = [
     projects: ["CodeKrafters Guild Blog", "Developer Onboarding Guides", "Hackathon Recaps"],
     sfx: "THWIP!",
     people: [
-      { role: "Noorul Hatim", title: "Head", image: "/domain_pics/content/head/Noorul hatim.png" },
-      { role: "Silvi", title: "Head", image: "/domain_pics/content/head/silvi.png" },
-      { role: "Sana", title: "Lead", image: "/domain_pics/content/lead/Sana.png" },
-      { role: "Vasanti", title: "Lead", image: "/domain_pics/content/lead/Vasanti .jpg" },
+      { role: "Noorul Hatim", title: "Head", image: "/domain_pics/content/head/Noorul hatim.png", linkedin: "https://www.linkedin.com/in/noorulhatim?utm_source=share_via&utm_content=profile&utm_medium=member_ios", instagram: "https://www.instagram.com/noorull_hatim?igsh=ZGRrc3pmdzZ2dmJ1&igsi=ZGRrc3pmdzZ2dmJ1&utm_source=qr" },
+      { role: "Silvi", title: "Head", image: "/domain_pics/content/head/silvi.png", linkedin: "https://www.linkedin.com/in/silvi-mathur?utm_source=share_via&utm_content=profile&utm_medium=member_ios", instagram: "https://www.instagram.com/silvizz_24?igsh=d2oyN3J5cHFudnF6&utm_source=qr" },
+      { role: "Sana", title: "Lead", image: "/domain_pics/content/lead/Sana.png", linkedin: "https://www.linkedin.com/in/sana-afreen-a3351636b", instagram: "https://www.instagram.com/sana_kaun_?igsh=ZXBiM2hsY21lZnNq" },
+      { role: "Vasanti", title: "Lead", image: "/domain_pics/content/lead/Vasanti .jpg", linkedin: "https://www.linkedin.com/in/vasanti-s-02694637b", instagram: "https://www.instagram.com/_.vasxnti._?igsh=MXg5cnIwOXdteDIwOQ==" },
     ],
   },
   {
@@ -69,10 +69,10 @@ export const DOMAINS: Domain[] = [
     projects: ["Launchpad Retro Theme System", "Club Mascot & Emblem Suite", "Design System Tokens"],
     sfx: "WHAM!",
     people: [
-      { role: "Tanisha", title: "Head", image: "/domain_pics/creative/head/TANISHA PAVITHRAKUMAR.png", objectPosition: "center" },
-      { role: "Tito Ishwar", title: "Head", image: "/domain_pics/creative/head/Tito eshwar.JPG" },
-      { role: "Kruthika", title: "Lead", image: "/domain_pics/creative/lead/kruthika.jpeg" },
-      { role: "Neeraja", title: "Lead", image: "/domain_pics/creative/lead/neeraja.jpeg" },
+      { role: "Tanisha", title: "Head", image: "/domain_pics/creative/head/TANISHA PAVITHRAKUMAR.png", objectPosition: "center", linkedin: "https://www.linkedin.com/in/tanisha-pavithrakumar-8a5939336", instagram: "https://www.instagram.com/tanishaaa_244?igsh=MXU0Z2N6NTZndzd1Zw%3D%3D&utm_source=qr" },
+      { role: "Tito Ishwar", title: "Head", image: "/domain_pics/creative/head/Tito eshwar.JPG", linkedin: "https://www.linkedin.com/in/tito-ishwar-648387328/", instagram: "https://www.instagram.com/tito_ishwar_2007_?utm_source=qr" },
+      { role: "Kruthika", title: "Lead", image: "/domain_pics/creative/lead/kruthika.jpeg", linkedin: "https://www.linkedin.com/in/kruthikasubbu?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/kruuuelle_18?igsh=MTF3czF5MnV3amdlaQ==&igsi=MTF3czF5MnV3amdlaQ==" },
+      { role: "Neeraja", title: "Lead", image: "/domain_pics/creative/lead/neeraja.jpeg", linkedin: "https://www.linkedin.com/in/neeraja-balaji-0323b2384?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/neeru_balaji?igsh=MWJoc3B2cWIwMGdlaA==&igsi=MWJoc3B2cWIwMGdlaA==" },
     ],
   },
   {
@@ -85,10 +85,10 @@ export const DOMAINS: Domain[] = [
     projects: ["Weekly CP Ladder", "Algorithm Visualizer", "Campus Contest Platform"],
     sfx: "THWIP!",
     people: [
-      { role: "Jahanvi", title: "Head", image: "/domain_pics/cp/head/Jahanvi.png" },
-      { role: "Mrudu", title: "Head", image: "/domain_pics/cp/head/Mrudu.png" },
-      { role: "Eshwar", title: "Lead", image: "/domain_pics/cp/lead/Eshwar.png" },
-      { role: "Sundar", title: "Lead", image: "/domain_pics/cp/lead/Sundar.png" },
+      { role: "Jahanvi", title: "Head", image: "/domain_pics/cp/head/Jahanvi.png", linkedin: "https://www.linkedin.com/in/jahanvi-jha-35a011348" },
+      { role: "Mrudu Bhashini", title: "Head", image: "/domain_pics/cp/head/Mrudu.png", linkedin: "https://www.linkedin.com/in/mrudubhashini-cr-343954277?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/mrudu_bhashini_cr?igsh=MTl5Z2Z5cTB2NW12cw==&igsi=MTl5Z2Z5cTB2NW12cw==" },
+      { role: "Eshwar", title: "Lead", image: "/domain_pics/cp/lead/Eshwar.png", linkedin: "https://www.linkedin.com/in/eshwarthath/", instagram: "https://www.instagram.com/eshwar._.thath" },
+      { role: "Sundar", title: "Lead", image: "/domain_pics/cp/lead/Sundar.png", linkedin: "https://www.linkedin.com/in/sundar-reguraman-373a01277/", instagram: "https://www.instagram.com/sundarreguraman/" },
     ],
   },
   {
@@ -101,11 +101,11 @@ export const DOMAINS: Domain[] = [
     projects: ["Hackathon Sponsor Deck", "Keynote Speaker Series", "Social Media Campaigns"],
     sfx: "WHAM!",
     people: [
-      { role: "Siddhart", title: "Head", image: "/domain_pics/pr/head/Siddhart.png" },
-      { role: "Mahalakshmi", title: "Head", image: "/domain_pics/pr/head/Mahalakshmi.jpeg" },
-      { role: "Ankita", title: "Lead", image: "/domain_pics/pr/lead/Ankita.png" },
-      { role: "Ram", title: "Lead", image: "/domain_pics/pr/lead/Ram.png" },
-      { role: "Tavishi", title: "Lead", image: "/domain_pics/pr/lead/Tavishi.png" },
+      { role: "Siddhart", title: "Head", image: "/domain_pics/pr/head/Siddhart.png", linkedin: "https://www.linkedin.com/in/siddarth-kilari-440697310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", instagram: "https://www.instagram.com/siddarth_kilari?igsh=MmppNnhmYWVxZmZi&utm_source=qr" },
+      { role: "Mahalakshmi", title: "Head", image: "/domain_pics/pr/head/Mahalakshmi.jpeg", linkedin: "http://www.linkedin.com/in/mahalakshmi-karthikeyan-bhavani", instagram: "https://www.instagram.com/kb_maha_lakshmi/" },
+      { role: "Ankita", title: "Lead", image: "/domain_pics/pr/lead/Ankita.png", linkedin: "https://www.linkedin.com/in/ankita-arun-8705a237b?utm_source=share_via&utm", instagram: "https://www.instagram.com/_ankiii_9?igsh=d28wdzFkc2cxOGRq" },
+      { role: "Ram", title: "Lead", image: "/domain_pics/pr/lead/Ram.png", linkedin: "https://www.linkedin.com/in/ramanathan-padmanabhan-4a9a91384?utm_source=share_via&utm_content=profile&utm_medium=member_ios", instagram: "https://www.instagram.com/_ramanathan_702?igsh=bjFkeGFjYXYwbnlp&utm_source=qr" },
+      { role: "Tavishi", title: "Lead", image: "/domain_pics/pr/lead/Tavishi.png", linkedin: "https://www.linkedin.com/in/tavisshiksjjha/", instagram: "https://www.instagram.com/_tavisshi_/" },
     ],
   },
   {
@@ -118,10 +118,10 @@ export const DOMAINS: Domain[] = [
     projects: ["Campus CTF Hosting", "Vulnerability Scanner", "Security Awareness Campaign"],
     sfx: "THWIP!",
     people: [
-      { role: "Adithya Kridhna", title: "Head", image: "/domain_pics/cs/head/adithya kridhna.jpeg", objectPosition: "center" },
-      { role: "Yogeswaran", title: "Head", image: "/domain_pics/cs/head/Yogeswaran.png" },
-      { role: "Meyyamai", title: "Lead", image: "/domain_pics/cs/lead/MEYYAMAI.png" },
-      { role: "Tejeshwar", title: "Lead", image: "/domain_pics/cs/lead/Tejeshwar.png" },
+      { role: "Adhithya Krishna", title: "Head", image: "/domain_pics/cs/head/adithya kridhna.jpeg", objectPosition: "center", linkedin: "https://www.linkedin.com/in/aknairptb", instagram: "https://www.instagram.com/_.adi_x" },
+      { role: "Yogeswaran", title: "Head", image: "/domain_pics/cs/head/Yogeswaran.png", linkedin: "https://www.linkedin.com/in/yogeswarannn/", instagram: "https://www.instagram.com/yogeswarannn/" },
+      { role: "Meyyamai", title: "Lead", image: "/domain_pics/cs/lead/MEYYAMAI.png", linkedin: "https://www.linkedin.com/in/meyyammai-renganathan", instagram: "https://www.instagram.com/meyyammai._.here._?igsh=MWxwcnU2YnZkN203eA==" },
+      { role: "Tejeshwar", title: "Lead", image: "/domain_pics/cs/lead/Tejeshwar.png", linkedin: "https://www.linkedin.com/in/tejeshwar-a-senthilkumar-1938a8320?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/tejeshwar.09?igsh=MXd0aW1maG04MHV2ZQ==" },
     ],
   },
 ];
@@ -206,6 +206,7 @@ export type Leadership = {
   image: string;
   description: string;
   linkedin?: string;
+  instagram?: string;
 };
 
 export const LEADERSHIP: Leadership[] = [
@@ -215,7 +216,8 @@ export const LEADERSHIP: Leadership[] = [
     title: "President",
     image: "/domain_pics/pres/Sanjay.jpeg",
     description: "Guiding CodeKrafters with clarity, creativity, and conviction — leading our community into one of SRM's most dynamic tech forces.",
-    linkedin: "https://www.linkedin.com/in/sanjay-ganesh-k-barade-675b38324/"
+    linkedin: "https://www.linkedin.com/in/sanjay-ganesh-k-barade-675b38324/",
+    instagram: "https://www.instagram.com/barade_sanjay"
   },
   {
     id: "vp",
@@ -223,7 +225,8 @@ export const LEADERSHIP: Leadership[] = [
     title: "Vice President",
     image: "/domain_pics/vp/Satya VP.png",
     description: "Driving innovation and strategy across all domains — ensuring CodeKrafters remains at the forefront of student-led technical excellence.",
-    linkedin: "https://www.linkedin.com/in/satyalohith455/"
+    linkedin: "https://www.linkedin.com/in/satyalohith455?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    instagram: "https://www.instagram.com/satyalohithh?igsh=MXViZHdqMG1lejg1ZA%3D%3D&igsi=MXViZHdqMG1lejg1ZA%3D%3D&utm_source=qr"
   }
 ];
 
