@@ -23,7 +23,7 @@ export const DOMAINS: Domain[] = [
 
       { role: "Vinoth", title: "Head", image: "/domain_pics/dev/head/Vinoth.png", linkedin: "https://www.linkedin.com/in/vinoth-anand-gani-304126325/", instagram: "https://www.instagram.com/vinayvinod567/" },
       { role: "Anand", title: "Head", image: "/domain_pics/dev/head/Anand.jpg", linkedin: "https://www.linkedin.com/in/anandsivarams/", instagram: "https://www.instagram.com/ananvdd" },
-      { role: "Akshay", title: "Lead", image: "/domain_pics/dev/lead/Akshay.png", linkedin: "https://www.linkedin.com/in/akshay-p-9bb587355/", instagram: "https://www.instagram.com/___iamakshay__/" },
+      { role: "Akshay", title: "Lead", image: "/domain_pics/dev/lead/Akshay.jpeg", linkedin: "https://www.linkedin.com/in/akshay-p-9bb587355/", instagram: "https://www.instagram.com/___iamakshay__/" },
       { role: "Abhishek", title: "Lead", image: "/domain_pics/dev/lead/Abhishek.jpeg", linkedin: "https://www.linkedin.com/in/abhishek-vinod-/", instagram: "https://www.instagram.com/_.abhishek_.vinod/" },
     ],
   },
