@@ -124,6 +124,19 @@ export const DOMAINS: Domain[] = [
       { role: "Tejeshwar", title: "Lead", image: "/domain_pics/cs/lead/Tejeshwar.png", linkedin: "https://www.linkedin.com/in/tejeshwar-a-senthilkumar-1938a8320?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/tejeshwar.09?igsh=MXd0aW1maG04MHV2ZQ==" },
     ],
   },
+  {
+    id: "op",
+    name: "Operations",
+    tagline: "Executing precision.",
+    description:
+      "The backbone of CodeKrafters. We manage logistics, coordinate events, and ensure every initiative runs smoothly behind the scenes.",
+    skills: ["Event Management", "Logistics", "Resource Allocation", "Team Coordination", "Planning"],
+    projects: ["Launchpad Logistics", "Weekly Meetups", "Hackathon Operations"],
+    sfx: "WHAM!",
+    people: [
+      { role: "Abdul Haady", title: "Head", image: "/domain_pics/op/Abdul Haady.jpeg", linkedin: "https://www.linkedin.com/in/abdul-haady-59622b332", instagram: "https://www.instagram.com/_hx_ady_?igsi=anBqa3RybzloYWxw" },
+    ],
+  },
 ];
 
 export const BOOT_LINES = [
@@ -147,7 +160,7 @@ export const ABOUT_PARAS = [
 ];
 
 export const STATS: { value: string; label: string }[] = [
-  { value: "7", label: "ACTIVE DOMAINS" },
+  { value: "8", label: "ACTIVE DOMAINS" },
   { value: "250+", label: "ACTIVE MEMBERS" },
   { value: "40+", label: "PROJECTS SHIPPED" },
   { value: "60+", label: "EVENTS RUN" },
