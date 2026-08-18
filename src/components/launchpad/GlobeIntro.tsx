@@ -61,6 +61,22 @@ export function GlobeIntro({ onDone }: { onDone: () => void }) {
   }, []);
 
   useEffect(() => {
+    const handleVisibilityChange = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      
+      if (document.hidden) {
+        audio.pause();
+      } else if (started && !leaving) {
+        audio.play().catch(() => {});
+      }
+    };
+    
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [started, leaving]);
+
+  useEffect(() => {
     if (!leaving) return;
     const audio = audioRef.current;
     if (audio) {

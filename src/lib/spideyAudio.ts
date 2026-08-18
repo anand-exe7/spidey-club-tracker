@@ -4,6 +4,7 @@
  */
 
 let audioCtx: AudioContext | null = null;
+let visibilityHandlerAdded = false;
 
 function getAudioContext(): AudioContext | null {
   if (typeof window === "undefined") return null;
@@ -13,7 +14,23 @@ function getAudioContext(): AudioContext | null {
       audioCtx = new AudioContextClass();
     }
   }
-  if (audioCtx && audioCtx.state === "suspended") {
+
+  if (!visibilityHandlerAdded && typeof document !== "undefined") {
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        if (audioCtx && audioCtx.state === "running") {
+          audioCtx.suspend().catch(() => {});
+        }
+      } else {
+        if (audioCtx && audioCtx.state === "suspended") {
+          audioCtx.resume().catch(() => {});
+        }
+      }
+    });
+    visibilityHandlerAdded = true;
+  }
+
+  if (audioCtx && audioCtx.state === "suspended" && (typeof document === "undefined" || !document.hidden)) {
     audioCtx.resume().catch(() => {});
   }
   return audioCtx;
