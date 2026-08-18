@@ -372,7 +372,7 @@ function Index() {
                   </div>
 
                   {/* Team — vertical portrait cards, heads then leads */}
-                  <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3 sm:gap-5">
+                  <div className="flex flex-wrap justify-center gap-3 sm:gap-5">
                     {[
                       ...(DOMAINS[currentDomainIndex]?.people ?? []).filter(
                         (p) => p.title.toLowerCase() === "head",
