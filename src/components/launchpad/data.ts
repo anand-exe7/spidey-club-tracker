@@ -71,6 +71,7 @@ export const DOMAINS: Domain[] = [
     people: [
       { role: "Tanisha", title: "Head", image: "/domain_pics/creative/head/TANISHA PAVITHRAKUMAR.png", objectPosition: "center", linkedin: "https://www.linkedin.com/in/tanisha-pavithrakumar-8a5939336", instagram: "https://www.instagram.com/tanishaaa_244?igsh=MXU0Z2N6NTZndzd1Zw%3D%3D&utm_source=qr" },
       { role: "Tito Ishwar", title: "Head", image: "/domain_pics/creative/head/Tito eshwar.JPG", linkedin: "https://www.linkedin.com/in/tito-ishwar-648387328/", instagram: "https://www.instagram.com/tito_ishwar_2007_?utm_source=qr" },
+      { role: "Sashank", title: "Head", image: "/domain_pics/creative/head/Sashank.jpeg", linkedin: "https://www.linkedin.com/in/sashanklatchireddy/", instagram: "https://www.instagram.com/theselenium/" },
       { role: "Kruthika", title: "Lead", image: "/domain_pics/creative/lead/kruthika.jpeg", linkedin: "https://www.linkedin.com/in/kruthikasubbu?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/kruuuelle_18?igsh=MTF3czF5MnV3amdlaQ==&igsi=MTF3czF5MnV3amdlaQ==" },
       { role: "Neeraja", title: "Lead", image: "/domain_pics/creative/lead/neeraja.jpeg", linkedin: "https://www.linkedin.com/in/neeraja-balaji-0323b2384?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/neeru_balaji?igsh=MWJoc3B2cWIwMGdlaA==&igsi=MWJoc3B2cWIwMGdlaA==" },
     ],
