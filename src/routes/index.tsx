@@ -137,6 +137,15 @@ function Index() {
 
             <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
+                href="https://lu.ma/ho38btx7"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => playThwipSound()}
+                className="border-4 border-web-yellow bg-web-yellow px-5 py-3 text-[9px] text-background font-bold transition-transform hover:-translate-y-0.5 sm:text-[10px] animate-pulse hover:animate-none"
+              >
+                🎟️ REGISTER NOW →
+              </a>
+              <a
                 href="#club-domains"
                 onClick={() => playThwipSound()}
                 className="border-4 border-frame-light bg-primary px-5 py-3 text-[9px] text-primary-foreground transition-transform hover:-translate-y-0.5 sm:text-[10px]"
@@ -561,16 +570,27 @@ function Index() {
             <p className="mt-3 text-[9px] text-muted-foreground sm:text-[11px]">
               Join CodeKrafters and build your first project with us.
             </p>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                playThwipSound();
-                toast("Club registrations are not yet open! Stay tuned.");
-              }}
-              className="mt-8 inline-block border-4 border-frame-light bg-primary px-6 py-3.5 text-[9px] text-primary-foreground transition-transform hover:-translate-y-0.5 sm:text-[10px] font-bold"
-            >
-              JOIN CODEKRAFTERS CLUB →
-            </button>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://lu.ma/ho38btx7"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => playThwipSound()}
+                className="inline-block border-4 border-web-yellow bg-web-yellow px-6 py-3.5 text-[9px] text-background font-bold transition-transform hover:-translate-y-0.5 sm:text-[10px] animate-pulse hover:animate-none"
+              >
+                🎟️ REGISTER ON LUMA →
+              </a>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  playThwipSound();
+                  toast("Club registrations are not yet open! Stay tuned.");
+                }}
+                className="inline-block border-4 border-frame-light bg-primary px-6 py-3.5 text-[9px] text-primary-foreground transition-transform hover:-translate-y-0.5 sm:text-[10px] font-bold"
+              >
+                JOIN CODEKRAFTERS CLUB →
+              </button>
+            </div>
           </section>
 
           {/* 06 // SPIDEY MASK & SUIT HUD LAB */}
@@ -616,6 +636,22 @@ function Index() {
               className="mt-6 text-[9px] text-primary font-bold hover:underline tracking-widest uppercase"
             >
               OR CLICK HERE TO VIEW LINKS
+            </a>
+
+            {/* Luma Event Registration */}
+            <a
+              href="https://lu.ma/ho38btx7"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => playThwipSound()}
+              className="mt-8 flex items-center gap-3 border-4 border-web-yellow bg-web-yellow px-6 py-4 text-background font-bold transition-transform hover:-translate-y-0.5 hover:scale-105 shadow-lg animate-pulse hover:animate-none"
+            >
+              <span className="text-xl">🎟️</span>
+              <div className="text-left">
+                <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest">REGISTER FOR LAUNCHPAD</p>
+                <p className="text-[8px] font-normal opacity-80 mt-0.5">lu.ma/ho38btx7</p>
+              </div>
+              <span className="text-base ml-2">→</span>
             </a>
 
             {/* Social Media Links Section */}

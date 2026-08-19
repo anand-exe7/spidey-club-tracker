@@ -50,6 +50,13 @@ function LinksPage() {
 
   const links: LinkItem[] = [
     {
+      label: "CodeKrafters Launchpad — Register Now",
+      url: "https://lu.ma/ho38btx7",
+      description: "Secure your spot at the CodeKrafters Launchpad event. Register now on Luma and be part of the web.",
+      icon: "🎟️",
+      tagline: "REGISTER NOW",
+    },
+    {
       label: "CodeKrafters Website",
       url: "https://codekrafters.tech/",
       description: "Explore our official hub. Discover all domains, projects, and initiatives of CodeKrafters.",
