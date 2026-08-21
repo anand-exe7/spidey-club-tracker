@@ -119,7 +119,7 @@ export const DOMAINS: Domain[] = [
     projects: ["Campus CTF Hosting", "Vulnerability Scanner", "Security Awareness Campaign"],
     sfx: "THWIP!",
     people: [
-      { role: "Adhithya Krishna", title: "Head", image: "/domain_pics/cs/head/adithya kridhna.jpeg", objectPosition: "center", linkedin: "https://www.linkedin.com/in/aknairptb", instagram: "https://www.instagram.com/_.adi_x" },
+      { role: "Adithya Krishna", title: "Head", image: "/domain_pics/cs/head/adithya kridhna.jpeg", objectPosition: "center", linkedin: "https://www.linkedin.com/in/aknairptb", instagram: "https://www.instagram.com/_.adi_x" },
       { role: "Yogeswaran", title: "Head", image: "/domain_pics/cs/head/Yogeswaran.png", linkedin: "https://www.linkedin.com/in/yogeswarannn/", instagram: "https://www.instagram.com/yogeswarannn/" },
       { role: "Meyyamai", title: "Lead", image: "/domain_pics/cs/lead/MEYYAMAI.png", linkedin: "https://www.linkedin.com/in/meyyammai-renganathan", instagram: "https://www.instagram.com/meyyammai._.here._?igsh=MWxwcnU2YnZkN203eA==" },
       { role: "Tejeshwar", title: "Lead", image: "/domain_pics/cs/lead/Tejeshwar.png", linkedin: "https://www.linkedin.com/in/tejeshwar-a-senthilkumar-1938a8320?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/tejeshwar.09?igsh=MXd0aW1maG04MHV2ZQ==" },
